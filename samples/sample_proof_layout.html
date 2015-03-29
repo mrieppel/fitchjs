@@ -1,0 +1,90 @@
+<html>
+<head>
+
+<style>
+
+table#drvt {
+font-family:monospace;
+border-collapse:collapse;
+padding:0px;
+}
+
+#drvt td {
+padding-top:0px;
+padding-bottom:0px;
+position:relative;
+}
+
+#drvt div {
+margin:0px;
+border-left:solid 1px black;
+margin-left:1em;
+}
+
+#drvt div.fbar {
+border-bottom:solid 1px black;
+border-left:none;
+margin:0;
+position:absolute;
+width:1.5em;
+height:100%;
+}
+
+.frmc p {
+padding-left:.8em;
+padding-top:.5em;
+padding-bottom:.5em;
+padding-right:1em;
+margin:0px;
+}
+
+
+td.frmc {
+
+}
+
+td.rulc {
+padding-left:2em;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<table id='drvt'>
+	<tr>
+		<td class='cntc'>1</td>
+		<td class='frmc'><div><p>P>(Q v S)</p></div></td>
+		<td class='rulc'>Premise</td>
+	</tr>
+	<tr>
+		<td class='cntc'>1</td>
+		<td class='frmc'><div><p>~QvR</p></td>
+		<td class='rulc'>Premise</td>
+	</tr>
+	<tr>
+		<td class='cntc'>1</td>
+		<td class='frmc'><div><div><div class='fbar'></div><p>Pv(S>(T<>F))</p></div></div></td>
+		<td class='rulc'>Assumption</td>
+	</tr>
+	<tr>
+		<td class='cntc'>1</td>
+		<td class='frmc'><div><div><p>Q v S</p></div></div></td>
+		<td class='rulc'>>E 1,1</td>
+	</tr>
+	<tr>
+		<td class='cntc'>1</td>
+		<td class='frmc'><div><div><p>R</p></div></div></td>
+		<td class='rulc'>DS 1,1</td>
+	</tr>
+	<tr>
+		<td class='cntc'>1</td>
+		<td><div class='frmc'><p>P>R</p></div></td>
+		<td class='rulc'>DS 1,1</td>
+	</tr>
+</table>
+
+<body>
+</html>

@@ -1,0 +1,254 @@
+body {
+font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+}
+
+#githublink {
+position:absolute;
+right:10px;
+top:8px;
+}
+
+#githublink a {
+color:#999999;
+}
+
+#menut {
+border-collapse:collapse;
+}
+
+#menut strong {
+font-weight:normal;
+font-size:12pt;
+}
+
+#menut td {
+width:150px;
+border-top:solid 1px black;
+border-right:solid 1px black;
+border-left:solid 1px black;
+padding:5px;
+}
+
+#menut a {
+text-decoration:none;
+}
+
+#menu {
+border:solid 1px black;
+padding:10px;
+margin-bottom:10px;
+font-size:10pt;
+}
+
+#appm {
+background:white;
+}
+
+#repm, #expm, #refm {
+background:#DDDDDD;
+}
+
+#prbt {
+display:inline;
+}
+
+#appt, #expt, #impt, #SI1, #reft {
+display:none;
+}
+
+.siti, .dth, .lin {
+display:none;
+}
+
+#importarea {
+font-family:monospace;
+font-weight:normal;
+font-size:medium;
+}
+
+#drvd {
+float:left;
+width:66%;
+padding:5px;
+min-height:100px;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+}
+
+#errord {
+float:right;
+width:32%;
+padding:2px;
+min-height:100px;
+font-family:monospace;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+}
+
+table#drvt {
+font-family:monospace;
+border-collapse:collapse;
+}
+
+#drvt td {
+padding-top:0px;
+padding-bottom:0px;
+}
+
+
+
+/* REFERENCE SECTION STUFF */
+
+#reft {
+border-collapse:collapse;
+vertical-align:top;
+text-align:left;
+}
+
+#reft>tbody>tr>th {
+text-decoration:underline;
+font-size:large;
+}
+
+#reft a {
+text-decoration:none;	
+}
+
+#sync, #srulc, #qrulc, #exc {
+display:none;
+}
+
+/* Class .info is for the syntax reference */
+
+#reft table.info {
+float:left;
+border-collapse:collapse;
+margin-right:1em;
+margin-bottom:2em;
+}
+
+#reft table.info th {
+border:solid 1px green;
+text-align:left;
+border: 1px solid black;
+padding: 4px;
+margin:0px;
+}
+
+#reft table.info td {
+text-align: left;
+border: 1px solid black;
+padding: 4px;
+margin:0px;
+}
+
+#reft div.note {
+width:750px;
+}
+
+#reft div.note a:visited {
+color:blue;
+}
+
+#reft table.rulcont {
+border-collapse:collapse;
+margin-bottom:1em;
+}
+
+#reft table.rulcont td.brd {
+vertical-align:top;
+border:solid 1px black;
+width:250px;
+}
+
+/* Class .rule is for tables containing rule guidelines */
+
+#reft table.rule {
+border-collapse:collapse;
+margin-bottom:1em;
+margin-left:1em;
+text-align:left;
+}
+
+#reft table.rule td {
+font-family: Arial Unicode MS, "Open Sans", sans-serif;
+}
+
+#reft table.rule th {
+padding-bottom:.5em;
+}
+
+#reft table.rule td {
+padding:0px;
+}
+
+/* Various things for fitch lines */
+
+td.frmc div {
+margin:0px;
+border-left:solid 1px black;
+margin-left:1em;
+position:relative;
+}
+
+td.frmc div.fbar, td.frmc div.fbr {
+border-bottom:solid 1px black;
+border-left:none;
+margin:0;
+position:absolute;
+width:1.5em;
+height:100%;
+}
+
+.frmc p {
+padding-left:.8em;
+padding-top:.5em;
+padding-bottom:.5em;
+padding-right:1em;
+margin:0px;
+}
+
+.rulc, .rulc div {
+padding-left:2em;
+}
+
+/* OUTPUT AREA */
+
+
+#drvd {
+float:left;
+width:66%;
+padding:2px;
+min-height:100px;
+font-family:monospace;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+}
+
+#errord {
+float:right;
+width:32%;
+padding:2px;
+min-height:100px;
+font-family:monospace;
+border:solid 1px #B4BAEA;
+background-color:#F0F4FF;
+}
+
+/* d3 svg element styles */
+
+text {
+  font-size: 14px;
+  font-family: Arial Unicode MS, "Open Sans", sans-serif;
+  text-anchor: start;
+}
+
+path {
+  fill: none;
+  stroke: black;
+  stroke-width: 1;
+}
+
+rect {
+ fill:none;
+}
