@@ -14,7 +14,6 @@ function ckPR(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr);
-		l.flg = false;
 	}
 	if(l.lin.length>0) {
 		throw flag+'Premise rule can\'t be applied to any lines.';
@@ -44,7 +43,6 @@ function ckAS(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr);
-		l.flg = false;
 	}
 	
 	if(l.lin.length>0) {
@@ -71,14 +69,13 @@ function ckRE(l,n) {
 }
 
 
-// Fills the dth, sig, avl, frv, and flg properties of lines with non-discharge rules
+// Fills the dth, sig, avl, and frv properties of lines with non-discharge rules
 function fillND(l,n) {
 	if(!PROOF.length) {throw "[ERROR]: cannot begin a proof using "+gRul(l.rul)+".";}
 	l.sig = PROOF[l.cnt-2].sig.slice(0);
 	l.dth = l.sig.length;
 	l.avl = PROOF[l.cnt-2].avl.slice(0).concat(l.cnt-1);
 	l.frv = freeVars(l.tr);
-	l.flg = false;
 }
 
 // &I: Conjunction Introduction
@@ -158,7 +155,6 @@ function ckDJE(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr);
-		l.flg = false;
 	}
 	
 
@@ -198,7 +194,6 @@ function ckCNI(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr)
-		l.flg = false;
 	}
 	
 	
@@ -265,7 +260,6 @@ function ckBCI(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr);
-		l.flg = false;
 	}
 	
 	if(l.tr.length!=3 || l.tr[1]!='<>') {
@@ -322,7 +316,6 @@ function ckNI(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = PROOF[l.lin[1]-1].frv.slice(0);
-		l.flg = false;
 	}
 
 	if(PROOF[l.lin[0]-1].rul!='Assumption') {

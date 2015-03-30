@@ -14,7 +14,7 @@ Internally, the program uses the "plain" notation, e.g. '>' and '<>', rather tha
 // ======================================
 
 
-function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv,flg) {
+function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv) {
 	this.cnt = cnt; // holds line count as int
 	this.frm = frm; // holds formula as string
 	this.tr = tr; // holds a parse tree of the formula
@@ -27,7 +27,6 @@ function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv,flg) {
 	this.dth = dth; // holds line depth as int (NB dth = sig.length)
 	this.avl = avl; // holds the available lines (NB avl = [lines whose sig is a subset of this line's sig])
 	this.frv = frv; // hold free variables as a char array
-	this.flg = flg; // holds a pair of a boolean and char for flagged lines
 }
 
 var PROOF = []; // array to hold proof lines
@@ -62,6 +61,7 @@ function setup_proof() {
 			return errmess([0],err);
 		}
 	}
+	errmess([3],'');
 	disp('app');
 	draw_conclusion();
 	draw();

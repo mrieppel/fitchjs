@@ -14,7 +14,6 @@ function ckFLG(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = [l.frm];
-		l.flg = true;
 	}
 	
 	var freevars = frvList(l.avl);
@@ -33,7 +32,6 @@ function ckAI(l,n) {
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
 		l.frv = freeVars(l.tr);
-		l.flg = false;
 	}
 	
 	if(l.lin.length!=2) {
@@ -117,8 +115,7 @@ function ckEE(l,n) {
 		l.sig = PROOF[l.cnt-2].sig.slice(0,PROOF[l.cnt-2].sig.length-1);
 		l.dth = l.sig.length;
 		l.avl = gtAvl(l);
-		l.frv = freeVars(l.tr)
-		l.flg = false;
+		l.frv = freeVars(l.tr);
 	}
 	
 	if(l.lin.length!=3) {
@@ -167,8 +164,6 @@ function ckIDI(l,n) {
 	l.dth = l.sig.length;
 	l.avl = gtAvl(l);
 	l.frv = freeVars(l.tr);
-	l.flg = false;
-
 }
 
 // IDE: Identity Elimination
