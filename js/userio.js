@@ -7,6 +7,9 @@ The function Line(..) immediately below shows the attributes Line objects are ex
 Internally, the program uses the "plain" notation, e.g. '>' and '<>', rather than the unicode variants.  Unicode variants are used (i) when writing proof lines to the drv sig, (ii) when exporting the proof (if the user has selected "pretty print"), and (iii) for parts of error messages written to the error console.  Proofs can be imported in plain notation.  The transformations between unicode and plain notation are done via the functions richardify() and gRul().  The parser can parse formulas in either notation, but again, the "internals" of the program expect to encounter formulas in the plain notation.
 */
 
+// To uglify: cat js/draw.js js/parsing.js js/rules_helper.js js/rules_pl.js js/rules_ql.js js/rules_siti_pl.js js/ui.js js/userio.js js/validate.js | uglifyjs -m -o js/fitch.min.js
+
+
 // PROOF LINE CONSTRUCTOR AND PROOF ARRAY
 // ======================================
 
