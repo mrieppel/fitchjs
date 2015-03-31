@@ -297,8 +297,8 @@ function import_proof() {
 		try {validate_line(prePROOF[i]);} catch(err) {
 			PROOF = [];
 			PROOF = prePROOF.slice(0,i);
-			draw();
 			draw_conclusion();
+			draw();
 			return errmess([0],"ERROR: There is a problem with line "+(i+1)+" in the proof you are attempting to import.  The error message concerning it is:<br><br>"+err+"<br><br>The portion of the proof that was successfully validated is to the left.");
 		}
 		PROOF.push(prePROOF[i]);
@@ -309,8 +309,8 @@ function import_proof() {
 		errmess([2],"Proof successfully imported. Proof is complete!");
 	}
 	document.getElementById('importarea').value = 'Paste a previously exported proof (in plain notation) here and import it by clicking the button. NOTE: you can edit a proof here, but you need to be careful about formatting.  E.g. make sure the proof begins with a "Problem: " line, that formulas contain outermost parentheses, and that there are at least two spaces separating each "column" of the proof, with no double spaces elsewhere.';
-	draw();
 	draw_conclusion();
+	draw();
 }
 	
 // extracts proof from the text in the importarea returns a two element array: first 
@@ -479,9 +479,9 @@ function clearall() {
 	PROOF = [];
 	GOALS = [];
 	CONCLUSION = [];
+	draw_conclusion();
 	draw();
 	draw_goals();
-	draw_conclusion();
 }
 
 

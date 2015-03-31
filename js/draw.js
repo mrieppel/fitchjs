@@ -1,22 +1,16 @@
 var FW = 20, // width between fitch bars
 	LH = 30, // height between proof lines
-	NW = 40, // width of numbering column
-	OS = LH/6; // offset for text (above baseline and right of fitch bar)
+	NW = 30, // width of numbering column
+	OS = LH/6, // offset for text (above baseline and right of fitch bar)
+	RC = 30; // space between formula and rule
 
 function draw() {
-	var RC = 0,
-		SVGW = 300,
-		SVGH = 30;
+	var SVGW = "100%",
+		SVGH = LH;
 		
-	if(PROOF.length > 0) {
-		var fl = d3.max(PROOF, function(d) {return d.frm.length;});
-		var RC = 	NW + (fl*14) + OS +
-					((d3.max(PROOF, function(d) {return d.dth;})) *
-					FW); // horizontal distance from origin of rule column			
-		var max = d3.max(PROOF, function(d) { return d.rul=="Premise" ? d.cnt : 0;}); // line number of last premise
-	
-		var SVGW = RC+(14*d3.max(PROOF,function(d) {return d.rul.length;}));
-			SVGH = PROOF.length*LH;
+	if(PROOF.length > 0) {	
+		var max = d3.max(PROOF, function(d) {return d.rul=="Premise" ? d.cnt : 0;}); // line number of last premise
+		SVGH = PROOF.length*LH;
 	}
 	var proof = d3.select("#drv")
 		.attr("width", SVGW)
@@ -25,9 +19,6 @@ function draw() {
 	var line = proof.selectAll("g")
 		.data(PROOF);
 
-	line.selectAll('.rulc')
-		.attr("x", RC)
-		.attr("y",(LH-OS))
 
 	var l = line.enter()
 		.append("g")
@@ -68,26 +59,33 @@ function draw() {
 		.text(function(d) {return d.cnt;});
 
 	l.append("text") // append formula
-		.attr("x", function(d) {return NW+(FW*(d.dth > 1 ? d.dth-1 : 0))+OS;})
+		.attr("x", function(d) {return NW+(FW*(d.dth>1 ? d.dth-1 : 0))+(d.dth>0 ? OS : 0);})
 		.attr("y", ""+(LH-OS))
+		.attr("class","dfrm")
+		.attr("id",function(d) {return "frm"+d.cnt;})
 		.text(function(d) {return padBCs(richardify(d.frm));});
 
 	l.append("text") // append rule
-		.attr("x", RC)
-		.attr("y",(LH-OS))
-		.attr("class","rulc")
+		.attr("class","drul")
 		.text(function(d) {return d.lin.join(',')+" "+gRul(d.rul);});
 	
 	line.exit().remove();	
+	
+	if(PROOF.length) {
+		var w = d3.max(d3.selectAll(".dfrm")[0], function(d) {
+			var e = d3.select(d);
+			return parseInt(e.style("width"))+parseInt(e.attr("x"));})
+		d3.selectAll('.drul')
+			.attr("x",w+RC)
+			.attr("y",(LH-OS));
+	};	
+	
 }
 
 function draw_goals() {
-
-	var n = ("Conclusion".length*10);
-	var SVG2W = 300,
+	var SVG2W = "100%",
 		SVG2H = 0;
-	if(GOALS.length) {	
-		SVG2W = n+(10*d3.max(GOALS, function(d) {return d.length;}));
+	if(GOALS.length) {
 		SVG2H = GOALS.length*LH;
 	}		
 		
@@ -98,7 +96,7 @@ function draw_goals() {
 	var goal = goals.selectAll("g")
 		.data(GOALS);
 		
-	goal.select(".goalf").text(function(d) {return padBCs(richardify(d));});
+	goal.select(".glfrm").text(function(d) {return padBCs(richardify(d));});
 	
 	var g = goal.enter().append("g");
 	
@@ -107,47 +105,53 @@ function draw_goals() {
 	g.append("text")
 		.attr("x",0)
 		.attr("y",""+(LH-OS))
+		.attr("class","gllbl")
 		.text("Goal:");
 	
 	g.append("text")
-		.attr("x",n)
-		.attr("y",""+(LH-OS))
-		.attr("class","goalf")
+		.attr("class","glfrm")
 		.text(function(d) {return richardify(d);});
 	
 	goal.exit().remove();
+	
+	if(CONCLUSION.length) {
+		var w = parseInt(d3.select("#conlbl").style("width"));
+		d3.selectAll('.glfrm')
+			.attr("x",w+10)
+			.attr("y",(LH-OS));
+	}
 }
 
 function draw_conclusion() {
-	var n = ("Conclusion".length*10);
-	
-	var SVG3W = 300,
-		SVG3H = 0;
-	if(CONCLUSION.length) {	
-		SVG3W = n+(10*CONCLUSION[0].length),
-		SVG3H = LH;
-	}	
-	
 	var el = d3.select("#con")
- 		.attr("width", SVG3W)
- 		.attr("height", SVG3H);
+		.attr("width", "100%")
+		.attr("height",LH);
 	
 	var con = el.selectAll("g")
 		.data(CONCLUSION);	
 	
 	con.enter()
 		.append("g")
-		.attr("transform","translate(0,0)");
+		.attr("transform","translate(0,0)")
+		.attr("id","g");
 		
 	con.append("text")
 		.attr("x",0)
 		.attr("y",""+(LH-OS))
+		.attr("id","conlbl")
 		.text("Conclusion:");
 	
 	con.append("text")
-		.attr("x",n)
-		.attr("y",""+(LH-OS))
+		.attr("id","confrm")
 		.text(function(d) {return padBCs(richardify(d));});
 	
 	con.exit().remove();
+	
+	if(CONCLUSION.length) {
+		var w = parseInt(d3.select("#conlbl").style("width"));
+		d3.select("#confrm")
+			.attr("x",10+w)
+			.attr("y",(LH-OS));
+	};	
+
 }
