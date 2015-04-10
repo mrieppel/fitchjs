@@ -8,9 +8,6 @@ right:10px;
 top:8px;
 }
 
-#githublink a {
-color:#999999;
-}
 
 #menut {
 border-collapse:collapse;
@@ -22,7 +19,7 @@ font-size:12pt;
 }
 
 #menut td {
-width:150px;
+width:140px;
 border-top:solid 1px black;
 border-right:solid 1px black;
 border-left:solid 1px black;
