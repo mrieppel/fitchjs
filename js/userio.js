@@ -195,9 +195,11 @@ function export_proof() {
 	var latex = document.getElementById('latex').checked;
 	
 	var ocnt = PROOF.map(function(a) {return a.cnt.toString();});
-	var ofrm = plain ? PROOF.map(function(a) {return padBCs(a.frm);}) : '';
-	ofrm = pretty ? PROOF.map(function(a) {return padBCs(richardify(a.frm));}) : ofrm;
-	ofrm = latex ? PROOF.map(function(a) {return latexify(richardify(a.frm));}) : ofrm;	var pre = '';
+	var ofrm = pretty ? PROOF.map(function(a) {return padBCs(richardify(a.frm));}) : PROOF.map(function(a) {return padBCs(a.frm);});
+	ofrm = latex ? PROOF.map(function(a) {return latexify(richardify(a.frm));}) : ofrm;	
+	var ocnl = pretty ? padBCs(richardify(CONCLUSION[0])) : padBCs(CONCLUSION[0]);
+	ocnl = latex ? latexify(richardify(CONCLUSION[0])) : ocnl;
+	var pre = '';
 	var olin = PROOF.map(function(a) {return a.lin.join(',');}); 
 	var orul = (pretty || latex) ? PROOF.map(function(a) {return gRul(a.rul);}) : PROOF.map(function(a) {return a.rul;});
 	var odth = latex ? mkodth('\\fa ','\\fh ') : mkodth('| ','|_'); 
@@ -209,7 +211,7 @@ function export_proof() {
 		for(var i=0;i<a.length;i++) {
 			pre = i==a.length-1 ? pre+ofrm[i] : pre+ofrm[i]+', ';
 		}
-		pre = pre+' \u22A2 '+CONCLUSION[0]+'\r\n\r\n';
+		pre = pre+' \u22A2 '+ocnl+'\r\n\r\n';
 		ofrm = mkofrm(odth,ofrm,'  ');
 		var mc = max(ocnt)+2;
 		var mf = max(ofrm)+4;
@@ -227,7 +229,7 @@ function export_proof() {
 		for(var i=0;i<a.length;i++) {
 			pre = i==a.length-1 ? pre+ofrm[i] : pre+ofrm[i]+', ';
 		}
-		pre = pre+' \\vdash '+ofrm[ofrm.length-1]+'$\\\\\r\n\r\n';
+		pre = pre+' \\vdash '+ocnl+'$\\\\\r\n\r\n';
 		proof = '\\noindent\\begin{fitch}\r\n';
 		ofrm = mkofrm(odth,ofrm,'');
 		orul = orul.map(lxrul);
