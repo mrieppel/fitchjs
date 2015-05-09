@@ -139,13 +139,11 @@ function draw_conclusion() {
 		.attr("x",0)
 		.attr("y",""+(LH-OS))
 		.attr("id","conlbl")
-		.text("Conclusion:")
-		.attr("display","block");
+		.text("Conclusion:");
 	
 	con.append("text")
 		.attr("id","confrm")
-		.text(function(d) {return padBCs(richardify(d));})
-		.attr("display","block");
+		.text(function(d) {return padBCs(richardify(d));});
 	
 	con.exit().remove();
 	
