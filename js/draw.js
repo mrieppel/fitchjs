@@ -31,23 +31,23 @@ function draw() {
 			for(var i=0;i<(d.dth-1);i++) {
 				el.append("path")
 					.attr("d",function(d) {
-						return "M"+((i*FW)+NW)+" 0, V "+LH;
+						return "M"+((i*FW)+NW)+" 0 V "+LH;
 					});
 			}
 			var x = ((d.dth-1)*FW)+NW;
 			el.append("path") // adds last fitch line 
 				.attr("d",function(d) {
-					return "M"+x+" "+(pflag ? 0 : (1.6*OS))+", V "+LH;
+					return "M"+x+" "+(pflag ? 0 : (1.6*OS))+" V "+LH;
 				});
 			el.append("path") // adds horizontal assumption line
 				.attr("d",function(d) {
-					return "M"+x+" "+LH+", H "+(x+10);
+					return "M"+x+" "+LH+" H "+(x+10);
 				});
 		} else { // adds fitch lines for non-assumption lines
 			for(var i=0;i<=(d.dth-1);i++) {
 				el.append("path")
 					.attr("d", function(d) {
-						return "M"+((i*FW)+NW)+" 0, V "+LH;
+						return "M"+((i*FW)+NW)+" 0 V "+LH;
 					});
 			}
 		}
