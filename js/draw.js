@@ -140,12 +140,12 @@ function draw_conclusion() {
 		.attr("y",""+(LH-OS))
 		.attr("id","conlbl")
 		.text("Conclusion:")
-		.attr("display","block");
+		.attr("display","inline-block");
 	
 	con.append("text")
 		.attr("id","confrm")
 		.text(function(d) {return padBCs(richardify(d));})
-		.attr("display","block");
+		.attr("display","inline-block");
 	
 	con.exit().remove();
 	
