@@ -74,7 +74,8 @@ function draw() {
 	if(PROOF.length) {
 		var w = d3.max(d3.selectAll(".dfrm")[0], function(d) {
 			var e = d3.select(d);
-			return parseInt(e.style("width"))+parseInt(e.attr("x"));})
+			var box = e.node().getBBox();
+			return box["width"]+box["x"];})
 		d3.selectAll('.drul')
 			.attr("x",w+RC)
 			.attr("y",(LH-OS));
@@ -115,7 +116,8 @@ function draw_goals() {
 	goal.exit().remove();
 	
 	if(CONCLUSION.length) {
-		var w = parseInt(d3.select("#conlbl").style("width"));
+		var box = d3.select("#conlbl").node().getBBox();
+		var w = box["width"];
 		d3.selectAll('.glfrm')
 			.attr("x",w+10)
 			.attr("y",(LH-OS));
@@ -148,7 +150,8 @@ function draw_conclusion() {
 	con.exit().remove();
 	
 	if(CONCLUSION.length) {
-		var w = parseInt(d3.select("#conlbl").style("width"));
+		var box = d3.select("#conlbl").node().getBBox();
+		var w = box["width"];
 		d3.select("#confrm")
 			.attr("x",10+w)
 			.attr("y",(LH-OS));
