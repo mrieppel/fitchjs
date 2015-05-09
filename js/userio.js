@@ -40,7 +40,7 @@ var GOALS = []; // array to hold goal formulas
 // Sets up the proof with user entered premises and conclusion
 function setup_proof() {
 	var premises = document.getElementById('premises').value.replace(/ /g,'');
-	var premises = premises=='' ? [] : premises.split(',');
+	premises = premises=='' ? [] : premises.split(',');
 	var conclusion = document.getElementById('conclusion').value.replace(/ /g,'');
 	
 	try{
