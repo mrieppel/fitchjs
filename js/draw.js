@@ -152,6 +152,7 @@ function draw_conclusion() {
 	if(CONCLUSION.length) {
 		var box = d3.select("#conlbl").node().getBBox();
 		var w = box["width"];
+		console.log(w);
 		d3.select("#confrm")
 			.attr("x",10+w)
 			.attr("y",(LH-OS));
