@@ -165,40 +165,37 @@ function delete_goal() {
 }
 
 
-// Checks the whole proof
-function ckproof() {
+// Checks the whole proof.  Takes a parameter f; if f==1, returns the error message,
+// if f==undefined, prints message to error div
+function ckproof(f) {
 	var reply = '';
 	if(PROOF.length==0) {
 		reply = 'ERROR: No proof to check';
-		errmess([0],reply);
-		return reply;
+		return f==1 ? reply : errmess([0],reply);
 	}
 	for(var i=0;i<PROOF.length;i++) {
 		try {
 			ckRest(PROOF[i],1);
 		} catch(err) {
 			reply = 'ERROR: There is a problem with proof line '+(i+1)+'.  The error message concerning it is:<br /><br />'+err;
-			errmess([0,(i+1)],reply);
-			return reply;
+			return f==1 ? reply : errmess([0,(i+1)],reply);
 		}
 	}
 	var lastln = PROOF[PROOF.length-1];
 	for(var i=0;i<lastln.sig.length;i++) {
 		if(lastln.sig[i]!=1) {
 			reply = 'WARNING: proof is incomplete.  The final line of your proof depends on line '+lastln.sig[i]+', which is not a Premise!';
-			errmess([0],reply);
-			return reply;
+			return f==1 ? reply : errmess([0],reply);
 		}
 	}
 	if(lastln.frm!=CONCLUSION[0]) {
 		reply = 'WARNING: proof is incomplete.  The final line of your proof does not match the conclusion '+CONCLUSION[0]+' you are aiming for.';
-		errmess([0],reply);
-		return reply;
+		return f==1 ? reply : errmess([0],reply);
 	}
 	reply = 'Proof checks out!';
-	errmess([2],reply);
-	return reply;
+	return f==1 ? reply : errmess([2],reply);
 }
+
 
 // Exports a proof
 function export_proof() {
