@@ -20,6 +20,7 @@ function show(id) {
 	var siti = d3.selectAll('.siti').style("display","none");
 	var lin = d3.selectAll('.lin').style("display","none");
 	if(sel=='Assumption') {
+		document.getElementById('lin').value = '';
 		dth.style("display","inline");
 		document.getElementById('dth').value = 'Plus 1';
 	} else if(sel == 'SI/TI') {
