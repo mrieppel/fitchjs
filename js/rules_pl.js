@@ -369,3 +369,21 @@ function ckDN(l,n) {
 		throw flag+'Rule line '+x+' is not available at this stage of the proof.  The following lines are available: '+l.avl.join(',');
 	}
 }
+
+// EFQ: Ex Falso Quodlibet
+function ckEFQ(l,n) {
+	var flag = '[ERROR applying EFQ to line '+l.lin.join(',')+']: ';
+	if(n==0) {fillND(l);}
+	
+	if(l.lin.length!=1) {
+		throw flag+'Rule must be applied to one line.';
+	}
+	if(PROOF[l.lin[0]-1].frm!='#') {
+		throw flag+'Formula on line '+l.lin[0]+' must be the absurdity.';
+	}
+	x = areAvl(l.lin,l.avl);
+	if(x>=0) {
+		throw flag+'Rule line '+x+' is not available at this stage of the proof.  The following lines are available: '+l.avl.join(',');
+	}
+
+}

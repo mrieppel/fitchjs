@@ -35,15 +35,16 @@ function ckRest(l,n) {
 	else if(l.rul=='Reit') {return ckRE(l,n);}
  	else if(l.rul=='&I') {return ckCJI(l,n);}
  	else if(l.rul=='&E') {return ckCJE(l,n);}
+ 	else if(l.rul=='>I') {return ckCNI(l,n);}
+  	else if(l.rul=='>E') {return ckCNE(l,n);}
   	else if(l.rul=='vI') {return ckDJI(l,n);}
   	else if(l.rul=='vE') {return ckDJE(l,n);}
-  	else if(l.rul=='>I') {return ckCNI(l,n);}
-  	else if(l.rul=='>E') {return ckCNE(l,n);}
-  	else if(l.rul=='<>I') {return ckBCI(l,n);}
-  	else if(l.rul=='<>E') {return ckBCE(l,n);}
   	else if(l.rul=='~I') {return ckNI(l,n);}
    	else if(l.rul=='~E') {return ckNE(l,n);}
    	else if(l.rul=='DN') {return ckDN(l,n);}
+   	else if(l.rul=='EFQ') {return ckEFQ(l,n);}
+  	else if(l.rul=='<>I') {return ckBCI(l,n);}
+  	else if(l.rul=='<>E') {return ckBCE(l,n);}
   	else if(l.rul=='Flag') {return ckFLG(l,n);}
   	else if(l.rul=='EI') {ckEI(l,n);}
   	else if(l.rul=='EE') {ckEE(l,n);}
