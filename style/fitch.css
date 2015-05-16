@@ -2,12 +2,26 @@ body {
 font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
 }
 
+/* githublink things */
+
 #githublink {
 position:absolute;
 right:10px;
 top:8px;
+font-size:10pt;
 }
 
+#githublink img {
+vertical-align:bottom;
+}
+
+#githublink a:link {color:#444;text-decoration:none;}      /* unvisited link */
+#githublink a:visited {color:#444;text-decoration:none;}  /* visited link */
+#githublink a:hover {color:#999;text-decoration:none;}  /* mouse over link */
+#githublink a:active {color:#999;text-decoration:none;}  /* selected link */
+
+
+/* menu things */
 
 #menut {
 border-collapse:collapse;
