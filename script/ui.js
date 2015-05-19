@@ -23,11 +23,14 @@ function show(id) {
 		document.getElementById('lin').value = '';
 		dth.style("display","inline");
 		document.getElementById('dth').value = 'Plus 1';
+		document.getElementById('dth').focus();
 	} else if(sel == 'SI/TI') {
 		siti.style("display","inline");
 		lin.style("display","inline");
-	} else if(sel != '--Select--' && sel!='Flag' && sel!='=I') {
+		document.getElementById("siti").focus();
+	} else if(sel!='--Select--' && sel!='Flag' && sel!='=I') {
 		lin.style("display","inline");
+		document.getElementById("lin").focus();
 	}
 }
 
