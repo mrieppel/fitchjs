@@ -23,7 +23,7 @@ function show(id) {
 		document.getElementById('lin').value = '';
 		dth.style("display","inline");
 		var e = document.getElementById('dth');
-		//e.focus();
+		e.focus();
 		e.value = 'Plus 1';
 	} else if(sel == 'SI/TI') {
 		siti.style("display","inline");
