@@ -22,8 +22,9 @@ function show(id) {
 	if(sel=='Assumption') {
 		document.getElementById('lin').value = '';
 		dth.style("display","inline");
-		document.getElementById('dth').value = 'Plus 1';
-		document.getElementById('dth').focus();
+		var e = document.getElementById('dth');
+		//e.focus();
+		e.value = 'Plus 1';
 	} else if(sel == 'SI/TI') {
 		siti.style("display","inline");
 		lin.style("display","inline");
