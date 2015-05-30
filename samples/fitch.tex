@@ -12,30 +12,28 @@
 \fa \fh P & Assumption\\
 \fa \fa \fh A & Assumption\\
 \fa \fa \fa Q & 1,2  $\rightarrow$E\\
-\fa \fa (A\rightarrow Q) & 3,4  $\rightarrow$I\\
-\fa (P\rightarrow (A\rightarrow Q)) & 2,5  $\rightarrow$I\\
+\fa \fa (A\rightarrow Q) & 3-4  $\rightarrow$I\\
+\fa (P\rightarrow (A\rightarrow Q)) & 2-5  $\rightarrow$I\\
 \end{fitch}
 
 
 \vspace{2em}
 
 %NOTE: requires \usepackage{fitch}
-\noindent Problem: $(A\lor B) \vdash \lnot (\lnot A\land \lnot B)$\\
+\noindent Problem: $(A\lor B) \vdash \sim (\sim A\& \sim B)$\\
 
 \noindent\begin{fitch}
 \fh (A\lor B) & Premise\\
-\fa \fh (\lnot A\land \lnot B) & Assumption\\
+\fa \fh (\sim A\& \sim B) & Assumption\\
 \fa \fa \fh A & Assumption\\
-\fa \fa \fa \lnot A & 2  $\land$E\\
-\fa \fa \fa \bot  & 3,4  $\lnot$E\\
+\fa \fa \fa \sim A & 2  $\&$E\\
+\fa \fa \fa \bot  & 3,4  $\sim$E\\
 \fa \fa \fh B & Assumption\\
-\fa \fa \fa \lnot B & 2  $\land$E\\
-\fa \fa \fa \bot  & 6,7  $\lnot$E\\
-\fa \fa \bot  & 1,3,5,6,8  $\lor$E\\
-\fa \lnot (\lnot A\land \lnot B) & 2,9  $\lnot$I\\
+\fa \fa \fa \sim B & 2  $\&$E\\
+\fa \fa \fa \bot  & 6,7  $\sim$E\\
+\fa \fa \bot  & 1,3-5,6-8  $\lor$E\\
+\fa \sim (\sim A\& \sim B) & 2-9  $\sim$I\\
 \end{fitch}
-
-
 
 \newpage
 
@@ -51,30 +49,29 @@
 \fa \fa \fh Fa & Assumption\\
 \fa \fa \fa (A\lor Fa) & 6  $\lor$I\\
 \fa \fa \fa (\exists x)(A\lor Fx) & 7  $\exists$I\\
-\fa \fa (\exists x)(A\lor Fx) & 5,6,8  $\exists$E\\
-\fa (\exists x)(A\lor Fx) & 1,2,4,5,9  $\lor$E\\
+\fa \fa (\exists x)(A\lor Fx) & 5,6-8  $\exists$E\\
+\fa (\exists x)(A\lor Fx) & 1,2-4,5-9  $\lor$E\\
 \end{fitch}
 
 
 \vspace{2em}
 
 %NOTE: requires \usepackage{fitch}
-\noindent Problem: $ \vdash (\forall x)(\forall y)((Fx\land \lnot Fy)\rightarrow \lnot x=y)$\\
+\noindent Problem: $ \vdash (\forall x)(\forall y)((Fx\& \sim Fy)\rightarrow \sim x=y)$\\
 
 \noindent\begin{fitch}
 \fh a & Flag\\
 \fa \fh b & Flag\\
-\fa \fa \fh (Fa\land \lnot Fb) & Assumption\\
+\fa \fa \fh (Fa\& \sim Fb) & Assumption\\
 \fa \fa \fa \fh a=b & Assumption\\
-\fa \fa \fa \fa Fa & 3  $\land$E\\
-\fa \fa \fa \fa \lnot Fb & 3  $\land$E\\
+\fa \fa \fa \fa Fa & 3  $\&$E\\
+\fa \fa \fa \fa \sim Fb & 3  $\&$E\\
 \fa \fa \fa \fa Fb & 4,5  =E\\
-\fa \fa \fa \fa \bot  & 6,7  $\lnot$E\\
-\fa \fa \fa \lnot a=b & 4,8  $\lnot$I\\
-\fa \fa ((Fa\land \lnot Fb)\rightarrow \lnot a=b) & 3,9  $\rightarrow$I\\
-\fa (\forall y)((Fa\land \lnot Fy)\rightarrow \lnot a=y) & 2,10  $\forall$I\\
-(\forall x)(\forall y)((Fx\land \lnot Fy)\rightarrow \lnot x=y) & 1,11  $\forall$I\\
+\fa \fa \fa \fa \bot  & 6,7  $\sim$E\\
+\fa \fa \fa \sim a=b & 4-8  $\sim$I\\
+\fa \fa ((Fa\& \sim Fb)\rightarrow \sim a=b) & 3-9  $\rightarrow$I\\
+\fa (\forall y)((Fa\& \sim Fy)\rightarrow \sim a=y) & 2-10  $\forall$I\\
+(\forall x)(\forall y)((Fx\& \sim Fy)\rightarrow \sim x=y) & 1-11  $\forall$I\\
 \end{fitch}
-
 
 \end{document}

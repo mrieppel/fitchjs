@@ -20,6 +20,11 @@ vertical-align:bottom;
 #githublink a:hover {color:#999;text-decoration:none;}  /* mouse over link */
 #githublink a:active {color:#999;text-decoration:none;}  /* selected link */
 
+a:link {color:blue;text-decoration:none;}      /* unvisited link */
+a:visited {color:blue;text-decoration:none;}  /* visited link */
+a:hover {color:blue;text-decoration:none;}  /* mouse over link */
+a:active {color:blue;text-decoration:none;}  /* selected link */
+
 
 /* menu things */
 
@@ -38,10 +43,6 @@ border-top:solid 1px black;
 border-right:solid 1px black;
 border-left:solid 1px black;
 padding:5px;
-}
-
-#menut a {
-text-decoration:none;
 }
 
 #menu {

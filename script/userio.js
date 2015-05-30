@@ -20,7 +20,7 @@ function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv) {
 	this.tr = tr; // holds a parse tree of the formula
 	this.rul = rul; // holds the rule as string
 	this.seq = seq; // holds sequents in case of an SI rule
-	this.lin = lin; // holds rule lines as int array
+	this.lin = lin; // holds rule lines as an array (see linArr())
 	
 	// values below get initialized during validation
 	this.sig = sig; // holds line signature as array of ints
@@ -99,7 +99,7 @@ function validate_line(l) {
 		l.tr = parse(l.frm);
 	}
 	ckSyn(l);
-	l.lin = mkIntArr(l.lin);
+	l.lin = linArr(l.lin);
 	ckRest(l,0);
 }
 
@@ -210,7 +210,7 @@ function export_proof() {
 	var ocnl = pretty ? padBCs(richardify(CONCLUSION[0])) : padBCs(CONCLUSION[0]);
 	ocnl = latex ? latexify(richardify(CONCLUSION[0])) : ocnl;
 	var pre = '';
-	var olin = PROOF.map(function(a) {return a.lin.join(',');}); 
+	var olin = PROOF.map(function(a) {return linD(a.lin);}); 
 	var orul = (pretty || latex) ? PROOF.map(function(a) {return gRul(a.rul);}) : PROOF.map(function(a) {return a.rul;});
 	var odth = latex ? mkodth('\\fa ','\\fh ') : mkodth('| ','|_'); 
 	var proof = '';

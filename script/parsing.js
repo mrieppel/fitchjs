@@ -228,10 +228,11 @@ function ptou(s) {
 	}
 }
 
+// replaces unicode with latex
 function utox(c) {
 	switch(c) {
-		case '\u00AC' : return '\\lnot';
-		case '\u2227' : return '\\land';
+		case '~' : return '\\sim';
+		case '&' : return '\\&';
 		case '\u2228' : return '\\lor';
 		case '\u2192' : return '\\rightarrow';
 		case '\u2194' : return '\\leftrightarrow';

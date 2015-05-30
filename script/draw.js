@@ -67,7 +67,7 @@ function draw() {
 
 	l.append("text") // append rule
 		.attr("class","drul")
-		.text(function(d) {return d.lin.join(',')+" "+gRul(d.rul);});
+		.text(function(d) {return linD(d.lin)+" "+gRul(d.rul);});
 	
 	line.exit().remove();	
 	

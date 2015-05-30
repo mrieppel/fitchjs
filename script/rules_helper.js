@@ -1,6 +1,29 @@
 // HELPER FUNCTIONS FOR RULE CHECKING
 // ==================================
 
+// Fills the dth, sig, avl, and frv properties of lines with non-discharge rules
+function fillND(l) {
+	if(!PROOF.length) {throw "[ERROR]: cannot begin a proof using "+gRul(l.rul)+".";}
+	l.sig = PROOF[l.cnt-2].sig.slice(0);
+	l.dth = l.sig.length;
+	l.avl = PROOF[l.cnt-2].avl.slice(0).concat(l.cnt-1);
+	l.frv = freeVars(l.tr);
+}
+
+// Fills the dth, sig, avl, and frv properties of lines with discharge rules
+// The arguments l and sc are the line in question and the line number of the conclusion 
+// of the subproof the line is applied to (in the case of rules that appeal to two
+// subproofs, pass the sc of the second subproof).
+function fillD(l,sc) {
+	if(!PROOF.length) {throw "[ERROR]: cannot begin a proof using "+gRul(l.rul)+".";}
+	if(sc==l.cnt-1) {
+		l.sig = PROOF[sc-1].sig.slice(0,PROOF[sc-1].sig.length-1);
+	} else {l.sig = PROOF[l.cnt-2].sig.slice(0);}
+	l.dth = l.sig.length;
+	l.avl = gtAvl(l);
+	l.frv = freeVars(l.tr)
+}
+
 // Line -> [Int]
 // Takes a Line and return the set of lines available to that line
 function gtAvl(l) {
@@ -319,4 +342,17 @@ function insertTmp(tree,savtmp,loc) {
 		}
 		return true;
 	}	
+}
+
+// takes a subproof signature and returns the line number of the last line in the 
+// PROOF with that signature
+function lastline(sig) {
+	var l = -1;
+	for(var i=PROOF.length-1;i>=0;i--) {
+		if(same(sig,PROOF[i].sig)) {
+			return i+1;
+		}
+	}
+	console.log(l);
+	return l;
 }

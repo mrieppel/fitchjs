@@ -330,7 +330,7 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 				<tr><td class='cntc'>j</td><td class='frmc'><div><div><div class='fbar'></div><p>p</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><div><p>&bot;</p></div></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>&not;p</p></div></td><td class='rulc'><div>j,k &not;I</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>&not;p</p></div></td><td class='rulc'><div>j-k &not;I</div></td></tr>
 			</table>
 		</td>
 
@@ -354,7 +354,7 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 				<tr><td class='cntc'>j</td><td class='frmc'><div><div><div class='fbar'></div><p>p</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><div><p>q</p></div></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>p &rarr; q</p></div></td><td class='rulc'><div>j,k &rarr;I</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p &rarr; q</p></div></td><td class='rulc'><div>j-k &rarr;I</div></td></tr>
 			</table>
 		</td>
 
@@ -400,11 +400,21 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 		</td>
 
 		<td class='brd'>
-			
+			<table class='rule'>
+				<tr><th colspan='2'>Rule of DN</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>~~p</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p</p></div></td><td class='rulc'><div>j DN</td></tr>
+			</table>
 		</td>
 
 		<td class='brd'>
-			
+			<table class='rule'>
+				<tr><th colspan='2'>Rule of EFQ</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>&bot;</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p</p></div></td><td class='rulc'><div>j EFQ</td></tr>
+			</table>
 		</td>
 
 	</tr>

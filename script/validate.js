@@ -16,7 +16,7 @@ function ckSyn(l) {
 	if(x>=0) {
 		throw 'ERROR: the formula you entered contains the unrecognized character \''+l.frm[x]+'\'.  See the syntax guide under the Reference tab.';
 	}
-	if(!(l.lin=='') && !ckc(l.lin)) {
+	if(!cklin(l.lin)) {
 		throw 'ERROR: Rule lines are malformed';
 	}
 }
@@ -71,38 +71,73 @@ function oob(ar,n) {
 }
 
 // String -> Boolean
-// Takes a string and checks if it has the form: numeral comma numeral comma ... etc.
-function ckc(s) {
+// Takes a string and checks if it has the proper form of a line citation, e.g.
+// "1,2" or "1,2-3,4-5,6"
+function cklin(s) {
+	if(s.length==0) {return true;}
 	var n = ['0','1','2','3','4','5','6','7','8','9'];
-	var st = false;
+	var st = 0;
 	var c = '';
 	for(var i=0;i<s.length;i++) {
 		c = s[i];
-		if(n.indexOf(c)>=0) {
-			st=true;
-		} else if(c==',' && st) {
-			st = false;
-		} else {return false;}
+		if((st==0||st==1) && n.indexOf(c)>=0) {
+			st=1;
+		} else if(st==1 && c=="-") {
+			st=2;
+		} else if ((st==2||st==3) && n.indexOf(c)>=0) {
+			st=3;
+		} else if((st==1 || st==3) && c==",") {
+			st=0;
+		} else {st=4;}
 	}
-	return st;
+	return (st==1 || st==3);
+}
+
+// Takes a line citation string (as validated by cklin()) and turns it into an array
+// of ints, with subprooof citations marked by '-'; e.g. "1,2" becomes [1,2] and
+// "1-2" becomes [1,"-",2];
+function linArr(s) {
+	if(s=="") {return [];}
+	var ar = s.split(','),
+		t = [],
+		out = [];
+		
+	for(var i=0;i<ar.length;i++) {
+		if(ar[i].indexOf('-')<0) {
+			out.push(parseInt(ar[i]));
+		} else {
+			t = ar[i].split('-');
+			out.push(parseInt(t[0]));
+			out.push('-');
+			out.push(parseInt(t[1]));
+		}
+	}
+	return out;
+}
+
+// Takes a lin array (as produced by linArr()) and turns it back into a string
+function linD(a) {
+	var out = "";
+	for(var i=0;i<a.length;i++) {
+		if(a[i]=="-") {
+			out += "-";
+		} else {
+			if (i==(a.length-1)) {
+				out += a[i].toString();
+			} else if (a[i+1]=="-") {
+				out += a[i].toString();
+			} else {
+				out += a[i].toString()+",";
+			}
+		}
+	}
+	return out;
 }
 
 // [Int] -> [Int]
 // Takes an array of ints and returns the array sorted from smallest to largest
 function sorted(a) {
 	return a.sort(function(a,b) {return a-b;});
-}
-
-// String -> [Int]
-// Takes an array in the CSV format checked by ckc, and returns
-// the corresponding array of ints
-function mkIntArr(s) {
-	if(s=='') {
-		return [];
-	} else {
-		var a = s.split(',');
-		return a.map(function(x){return parseInt(x,10);});
-	}
 }
 
 // [String] -> Int
