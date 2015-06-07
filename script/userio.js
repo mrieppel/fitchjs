@@ -87,9 +87,9 @@ function append_line() {
 	}
 	try{validate_line(l);} catch(err) {return errmess([0],err);}
 	PROOF.push(l);
-	errmess([1],'');
 	clear_app();
 	draw();
+	checkifdone();
 }
 
 // Checks the information of the line the user is attempting to append
@@ -496,11 +496,20 @@ function clearall() {
 	draw_goals();
 }
 
+// check if proof is complete
+function checkifdone() {
+	var lastln = PROOF[PROOF.length-1];
+	if(lastln.frm==CONCLUSION[0] && (lastln.sig.length==0 || same(lastln.sig,[1]))) {
+		errmess([2],"Your proof is complete!  Ready to submit.");
+		GOALS = [];
+		draw_goals();
+	} else {errmess([1],'');}
+}
+
 
 // Displays error message.  The second parameter is the message, and the first 
 // is an array, of either one or two elements.  The first element is 0 for displaying
-// on a red background (errors), 1 for displaying on blue (unless proof is finished), 
-// 2 for displaying on green, and 3 for displaying a message on blue.  
+// on a red background (errors), 1 for displaying on blue, and 2 for displaying on green.  
 // The second (optional) element gives the line number on which the error occurred.  
 // NOTE: error line number currently being ignored (I used  to  highlight the line with 
 // the error in red).
@@ -510,24 +519,13 @@ function errmess(n,mess) {
 		erel.style.border = 'solid 1px #FF0000';
 		erel.style.backgroundColor = '#FF9999';
 		erel.innerHTML = mess;
-	} else if(n[0]==1) { // display on blue, or green if proof is finished
-		var lastln = PROOF[PROOF.length-1];
-		if(lastln.frm==CONCLUSION[0] && (lastln.sig.length==0 || same(lastln.sig,[1]))) { // proof is done
-			erel.style.border = 'solid 1px #87D51C';
-			erel.style.backgroundColor = '#E3FFB8';
-			erel.innerHTML = 'Your proof is complete!  Ready to submit.';	
-		} else {
-			erel.style.border = 'solid 1px #B4BAEA';
-			erel.style.backgroundColor = '#F0F4FF';
-			erel.innerHTML = mess;
-		}
+	} else if(n[0]==1) { // display on blue
+		erel.style.border = 'solid 1px #B4BAEA';
+		erel.style.backgroundColor = '#F0F4FF';
+		erel.innerHTML = mess;
 	} else if(n[0]==2) { // display on green
 		erel.style.border = 'solid 1px #87D51C';
 		erel.style.backgroundColor = '#E3FFB8';
-		erel.innerHTML = mess;
-	} else if(n[0]==3) { // display on blue
-		erel.style.border = 'solid 1px #B4BAEA';
-		erel.style.backgroundColor = '#F0F4FF';
 		erel.innerHTML = mess;
 	}
 	document.getElementById('rul').value = '--Select--';

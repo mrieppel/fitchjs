@@ -68,19 +68,30 @@ function draw() {
 	l.append("text") // append rule
 		.attr("class","drul")
 		.text(function(d) {return linD(d.lin)+" "+gRul(d.rul);});
-	
+
+	l.append("text") // append line delete
+		.attr("class","del");
+	 
 	line.exit().remove();	
 	
 	if(PROOF.length) {
-		var w = d3.max(d3.selectAll(".dfrm")[0], function(d) {
+		var wf = d3.max(d3.selectAll(".dfrm")[0], function(d) {
 			var e = d3.select(d);
 			var box = e.node().getBBox();
 			return box["width"]+box["x"];})
 		d3.selectAll('.drul')
-			.attr("x",w+RC)
+			.attr("x",wf+RC)
 			.attr("y",(LH-OS));
-	};	
-	
+		var wr = d3.max(d3.selectAll(".drul")[0], function(d) {
+			var e = d3.select(d);
+			var box = e.node().getBBox();
+			return box["width"]+box["x"];})
+		d3.selectAll(".del")
+			.attr("x",wr+FW)
+			.attr("y",(LH-OS))
+			.html(function(d) {return d.cnt>max && d.cnt==PROOF.length ? "&#x2717" : "";})
+			.on("click",function() {clrlast();});	
+	}	
 }
 
 function draw_goals() {
@@ -113,6 +124,9 @@ function draw_goals() {
 		.attr("class","glfrm")
 		.text(function(d) {return richardify(d);});
 	
+	g.append("text")
+		.attr("class","gdel");
+	
 	goal.exit().remove();
 	
 	if(CONCLUSION.length) {
@@ -122,6 +136,16 @@ function draw_goals() {
 			.attr("x",w+10)
 			.attr("y",(LH-OS));
 	}
+	
+	var wf = d3.max(d3.selectAll(".glfrm")[0], function(d) {
+		var e = d3.select(d);
+		var box = e.node().getBBox();
+		return box["width"]+box["x"];})
+	d3.selectAll(".gdel")
+		.attr("x",wf+FW)
+		.attr("y",(LH-OS))
+		.html(function(d,i) {return i==0 ? "&#x2717" : "";})
+		.on("click",function() {delete_goal();});
 }
 
 function draw_conclusion() {
