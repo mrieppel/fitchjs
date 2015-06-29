@@ -165,7 +165,9 @@ function isC(c) {
 // String -> String
 // Takes a formula and performs unicode substitutions.  Also works "in reverse".
 function richardify(s) {
-	if(isQ(s)) {
+	if(s=="") {
+		return s;
+	} else if(isQ(s)) {
 		return s[0]+ptou(s[1])+s[2]+s[3]+richardify(s.substring(4,s.length))	
 	} else if(isU(s[0])) {
 		return ptou(s[0])+richardify(s.substring(1,s.length));
