@@ -255,15 +255,17 @@ function export_proof() {
 	
 	document.getElementById('importarea').value = pre+proof;
 	
-	function mkodth(db,fb) { // makes depth lines and inserts fitch bar
+	function mkodth(db,fb) { // makes depth lines and inserts fitch bar, with db the depth line symbol and fb the horizontal fitch bar symbol
 		var out = [];
 		for(var i = 0;i<PROOF.length;i++) {
 			var s = '';
 			for(var j=0;j<PROOF[i].dth;j++) {
 				if(j!=PROOF[i].dth-1) {
 					s = s+db;
+				} else if(i==orul.lastIndexOf('Premise')) { // uses '\fj' rather than '\fh' for horizontal bar on last premise line in latex
+					s = latex ? s+'\\fj ' : s+fb;
 				} else {
-					s = (i==orul.lastIndexOf('Premise')||orul[i]=='Assumption'||orul[i]=='Flag') ? s+fb : s+db;
+					s = (orul[i]=='Assumption'||orul[i]=='Flag') ? s+fb : s+db;
 				}
 			}
 			out.push(s);
