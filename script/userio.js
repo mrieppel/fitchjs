@@ -452,7 +452,7 @@ function extract_proof() {
 	
 	function doSI(r) {
 		if(r.indexOf('SI')!=0) {return [];}
-		var SIs = document.getElementById('SI1').childNodes;
+		var SIs = document.getElementById('siti').childNodes;
 		for(var i=1;i<SIs.length;i++) {
 			if(i%2==0) {continue;} // NOTE: need this because 0 and even elements of the childNodes of a <select> are #text, which have no value
 			if(SIs[i].value.indexOf(r)==0) {

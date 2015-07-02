@@ -236,7 +236,7 @@ function utox(c) {
 		case '~' : return '\\sim';
 		case '&' : return '\\&';
 		case '\u2228' : return '\\lor';
-		case '\u2192' : return '\\supset';
+		case '\u2283' : return '\\supset';
 		case '\u2194' : return '\\equiv';
 		case '\u22A5' : return '\\bot';
 		case '\u2200': return '\\forall';
