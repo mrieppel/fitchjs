@@ -216,10 +216,10 @@ function ptou(s) {
 		//case '\u2227' : return '&';
 		case 'v' : return '\u2228';
 		case '\u2228' : return 'v';
-		case '>': return '\u2283';
-		case '\u2283' : return '>';
-		case '<>': return '\u2261';
-		case '\u2261' : return '<>';
+		case '>': return '\u2192';
+		case '\u2192' : return '>';
+		case '<>': return '\u2194';
+		case '\u2194' : return '<>';
 		case '#': return '\u22A5';
 		case '\u22A5' : return '#';
 		case 'A': return '\u2200';
@@ -236,8 +236,8 @@ function utox(c) {
 		case '~' : return '\\sim';
 		case '&' : return '\\&';
 		case '\u2228' : return '\\lor';
-		case '\u2283' : return '\\supset';
-		case '\u2194' : return '\\equiv';
+		case '\u2192' : return '\\rightarrow';
+		case '\u2194' : return '\\leftrightarrow';
 		case '\u22A5' : return '\\bot';
 		case '\u2200': return '\\forall';
 		case '\u2203' : return '\\exists';
