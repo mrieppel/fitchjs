@@ -238,7 +238,7 @@ function utox(c) {
 		case '\u2228' : return '\\lor';
 		case '\u2192' : return '\\rightarrow';
 		case '\u2194' : return '\\leftrightarrow';
-		case '\u22A5' : return '\\bot';
+		case '\u22A5' : return '\\curlywedge';
 		case '\u2200': return '\\forall';
 		case '\u2203' : return '\\exists';
 		default: return c;

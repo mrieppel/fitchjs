@@ -239,8 +239,8 @@ function export_proof() {
 		for(var i=0;i<a.length;i++) {
 			pre = i==a.length-1 ? pre+ofrm[i] : pre+ofrm[i]+', ';
 		}
-		pre = pre+' \\vdash '+ocnl+'$\\\\\r\n\r\n';
-		proof = '\\noindent\\begin{fitch}\r\n';
+		pre = pre+' \\vdash '+ocnl+'$\\\\\r\n\\vspace{1em}\r\n\r\n';
+		proof = '\\begin{fitch}\r\n';
 		ofrm = mkofrm(odth,ofrm,'');
 		orul = orul.map(lxrul);
 		for(var i=0;i<PROOF.length;i++) {

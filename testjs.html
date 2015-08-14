@@ -268,7 +268,7 @@ NOTE: the program will accept formulas with a binary connective as the main conn
 <br>
 
 <div class="note">
-NOTE: the order in which  rule lines are cited is important for multi-line rules.  For example, in an application of conditional elimination with citation "j,k &sup;E", the line j must be the conditional, and the line k must be its antecedent, <em>even if</em> line k actually <em>precedes</em> line j in the proof.  The only multi-line rules which are set up so that order doesn't matter are &amp;I and &not;E.
+NOTE: the order in which  rule lines are cited is important for multi-line rules.  For example, in an application of conditional elimination with citation "j,k &rarr;E", the line j must be the conditional, and the line k must be its antecedent, <em>even if</em> line k actually <em>precedes</em> line j in the proof.  The only multi-line rules which are set up so that order doesn't matter are &amp;I and ~E.
 </div>
 <br>
 
@@ -324,22 +324,22 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of &not;I</th></tr>
+				<tr><th colspan='2'>Rule of ~I</th></tr>
 				<tr><td class='cntc'>j</td><td class='frmc'><div><div><div class='fbar'></div><p>p</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><div><p>&bot;</p></div></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>&not;p</p></div></td><td class='rulc'><div>j-k &not;I</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>~p</p></div></td><td class='rulc'><div>j-k ~I</div></td></tr>
 			</table>
 		</td>
 
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of &not;E</th></tr>
-				<tr><td class='cntc'>j</td><td class='frmc'><div><p>&not;p</p></div></td><td class='rulc'></td></tr>
+				<tr><th colspan='2'>Rule of ~E</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>~p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><p>p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>&bot;</p></div></td><td class='rulc'><div>j,k &not;E</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>&bot;</p></div></td><td class='rulc'><div>j,k ~E</div></td></tr>
 			</table>
 		</td>
 		
@@ -348,29 +348,29 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 	
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='4'>Rule of &sup;I</th></tr>
+				<tr><th colspan='4'>Rule of &rarr;I</th></tr>
 				<tr><td class='cntc'>j</td><td class='frmc'><div><div><div class='fbar'></div><p>p</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><div><p>q</p></div></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>p &sup; q</p></div></td><td class='rulc'><div>j-k &sup;I</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p &rarr; q</p></div></td><td class='rulc'><div>j-k &rarr;I</div></td></tr>
 			</table>
 		</td>
 
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of &sup;E</th></tr>
-				<tr><td class='cntc'>j</td><td class='frmc'><div><p>p &sup; q</p></div></td><td class='rulc'></td></tr>
+				<tr><th colspan='2'>Rule of &rarr;E</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>p &rarr; q</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><p>p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>q</p></div></td><td class='rulc'><div>j,k &sup;E</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>q</p></div></td><td class='rulc'><div>j,k &rarr;E</div></td></tr>
 			</table>
 			
 		</td>
 
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of &equiv;I</th></tr>
+				<tr><th colspan='2'>Rule of &harr;I</th></tr>
 				<tr><td class='cntc'>h</td><td class='frmc'><div><div><div class='fbar'></div><p>p</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>i</td><td class='frmc'><div><div><p>q</p></div></div></td><td class='rulc'></td></tr>
@@ -378,7 +378,7 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 				<tr><td class='cntc'>j</td><td class='frmc'><div><div><div class='fbar'></div><p>q</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><div><p>:</p></div></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><div><p>p</p></div></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>p&equiv;q</p></div></td><td class='rulc'><div>h-i,j-k &equiv;I</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p&harr;q</p></div></td><td class='rulc'><div>h-i,j-k &harr;I</div></td></tr>
 			</table>
 
 		</td>
@@ -388,12 +388,12 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 	
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of &equiv;E</th></tr>
-				<tr><td class='cntc'>j</td><td class='frmc'><div><p>p &equiv; q</p></div></td><td class='rulc'></td></tr>
+				<tr><th colspan='2'>Rule of &harr;E</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>p &harr; q</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><p>p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>q</p></div></td><td class='rulc'><div>j,k &equiv;E</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>q</p></div></td><td class='rulc'><div>j,k &harr;E</div></td></tr>
 			</table>
 		</td>
 
