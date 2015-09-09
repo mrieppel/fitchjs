@@ -1,7 +1,7 @@
 // SI/TI RULE CHECKING FUNCTIONS (LSL ONLY)
 // ========================================
 
-// Main SI/TI checking function
+// Main SI checking function
 function ckSI(l,n) {
 	var flag = '[ERROR applying '+gRul(l.rul)+' to line(s) '+l.lin.join(',')+']: ';
 	if(n==0) {fillND(l);}
@@ -38,6 +38,52 @@ function ckSI(l,n) {
 	function nope() {
 		throw flag+'The formula being derived does not follow by '+gRul(l.rul)+'.';
 	}
+}
+
+// Checks bi-directional, i.e. equivalence, SI rules (DeM, Imp, NegImp, Dist)
+function ckSIbi(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line(s) '+l.lin.join(',')+']: ';
+	if(n==0) {fillND(l);}
+	
+	if(l.lin.length!=1) {
+		throw flag+'The rule should be applied to one line.';
+	}
+	
+	var m1 = match(parse(l.seq[0]),l.tr); // tests if target formula matches first part of sequent
+	if(!m1[0]) {// if not
+		m1 = match(parse(l.seq[1]),l.tr); // match target formula to second part of sequent
+		var m2 = match(parse(l.seq[0]),PROOF[l.lin-1].tr); // match source formula to first part of sequent
+	} else {var m2 = match(parse(l.seq[1]),PROOF[l.lin-1].tr);} // if yes, match source formula to second part of sequent
+	if(!m1[0] || !m2[0]){nope();}
+	if(clash(m1[1].concat(m2[1]))) {nope();}
+
+	x = areAvl(l.lin,l.avl);
+	if(x>=0) {
+		throw flag+'Rule line '+x+' is not available at this stage of the proof.  The following lines are available: '+l.avl.join(',');
+	}
+	function nope() {
+		throw flag+'The formula being derived does not follow by '+l.rul+'.';
+	}
+}
+
+// Checks TI rules
+function ckTI(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+']: ';
+	
+	if(!PROOF.length) {
+		l.sig = [];
+	} else {
+		l.sig = PROOF[l.cnt-2].sig.slice(0);
+	}
+	l.dth = l.sig.length;
+	l.avl = gtAvl(l);
+	l.frv = freeVars(l.tr);
+	
+	var x = match(parse(l.seq[0]),l.tr);
+	if(!x[0] || clash(x[1])) {
+		throw flag+ "The formula you entered is not a substitution instance of the theorem "+l.seq+".";
+	} // match failed or match "dictionary" is improper
+	
 }
 
 // String -> [String]

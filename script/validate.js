@@ -30,32 +30,35 @@ function ckRest(l,n) {
 	if((x = oob(l.lin,l.cnt))>0) {
 		throw 'ERROR: Rule line '+x+ ' is out of bounds. Rules must be applied to preceding lines.';
 	}
- 	if(l.rul=='Premise') {return ckPR(l,n);}
- 	else if(l.rul=='Assumption') {return ckAS(l,n);}
-	else if(l.rul=='Reit') {return ckRE(l,n);}
- 	else if(l.rul=='&I') {return ckCJI(l,n);}
- 	else if(l.rul=='&E') {return ckCJE(l,n);}
- 	else if(l.rul=='>I') {return ckCNI(l,n);}
-  	else if(l.rul=='>E') {return ckCNE(l,n);}
-  	else if(l.rul=='vI') {return ckDJI(l,n);}
-  	else if(l.rul=='vE') {return ckDJE(l,n);}
-  	else if(l.rul=='~I') {return ckNI(l,n);}
-   	else if(l.rul=='~E') {return ckNE(l,n);}
-   	else if(l.rul=='DN') {return ckDN(l,n);}
-   	else if(l.rul=='EFQ') {return ckEFQ(l,n);}
-  	else if(l.rul=='<>I') {return ckBCI(l,n);}
-  	else if(l.rul=='<>E') {return ckBCE(l,n);}
-  	else if(l.rul=='Flag') {return ckFLG(l,n);}
-  	else if(l.rul=='EI') {ckEI(l,n);}
-  	else if(l.rul=='EE') {ckEE(l,n);}
-  	else if(l.rul=='AI') {ckAI(l,n);}
-  	else if(l.rul=='AE') {ckAE(l,n);}
- 	else if(l.rul=='=I') {ckIDI(l,n);}
-  	else if(l.rul=='=E') {ckIDE(l,n);}
-  	else if(l.rul=='SI(QS)') {ckQS(l,n);}
-  	else if(l.rul=='SI(AV)') {ckAV(l,n);}
-  	else if(l.rul.indexOf('SI')==0) {ckSI(l,n);}
- 	else {throw "ERROR: The rule "+l.rul+" you entered is not recognized.";}
+	var r = l.rul;
+ 	if(r=='Premise') {return ckPR(l,n);}
+ 	else if(r=='Assumption') {return ckAS(l,n);}
+	else if(r=='Reit') {return ckRE(l,n);}
+ 	else if(r=='&I') {return ckCJI(l,n);}
+ 	else if(r=='&E') {return ckCJE(l,n);}
+ 	else if(r=='>I') {return ckCNI(l,n);}
+  	else if(r=='>E') {return ckCNE(l,n);}
+  	else if(r=='vI') {return ckDJI(l,n);}
+  	else if(r=='vE') {return ckDJE(l,n);}
+  	else if(r=='~I') {return ckNI(l,n);}
+   	else if(r=='~E') {return ckNE(l,n);}
+   	else if(r=='DN') {return ckDN(l,n);}
+   	else if(r=='EFQ') {return ckEFQ(l,n);}
+  	else if(r=='<>I') {return ckBCI(l,n);}
+  	else if(r=='<>E') {return ckBCE(l,n);}
+  	else if(r=='Flag') {return ckFLG(l,n);}
+  	else if(r=='EI') {ckEI(l,n);}
+  	else if(r=='EE') {ckEE(l,n);}
+  	else if(r=='AI') {ckAI(l,n);}
+  	else if(r=='AE') {ckAE(l,n);}
+ 	else if(r=='=I') {ckIDI(l,n);}
+  	else if(r=='=E') {ckIDE(l,n);}
+  	else if(r.indexOf('TI(LEM)')>0) {ckTI(l,n);}
+  	else if(r.indexOf('DeM')>0||r.indexOf('Imp')>0||r.indexOf('Dist')>0) {ckSIbi(l,n);} 
+  	else if(r=='SI(QS)') {ckQS(l,n);}
+  	else if(r=='SI(AV)') {ckAV(l,n);}
+  	else if(r.indexOf('SI')==0) {ckSI(l,n);}
+ 	else {throw "ERROR: The rule "+r+" you entered is not recognized.";}
 }
 
 // [Int] -> (Int -> Boolean)

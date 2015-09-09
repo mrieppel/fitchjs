@@ -129,18 +129,18 @@ THE SOFTWARE.
 			<option value='SI(PMI1):A,(B&gt;A)'>PMI1: A |- B&gt;A</option>
 			<option value='SI(PMI2):~A,(A&gt;B)'>PMI2: ~A |- A&gt;B</option>
 			<option value='SI(DN+):A,~~A'>DN+: A |- ~~A</option>
-			<option value='SI(DeM1):~(A&amp;B),(~Av~B)'>DeM1: ~(A&amp;B) |- ~Av~B</option>
-			<option value='SI(DeM2):(~Av~B),~(A&amp;B)'>DeM2: ~Av~B |- ~(A&amp;B)</option>
-			<option value='SI(DeM3):~(AvB),(~A&amp;~B)'>DeM3: ~(AvB) |- ~A&amp;~B</option>
-			<option value='SI(DeM4):(~A&amp;~B),~(AvB)'>DeM4: ~A&amp;~B |- ~(AvB)</option>
-			<option value='SI(Imp1):(A>B),(~AvB)'>Imp1: A&gt;B |- ~AvB</option>
-			<option value='SI(Imp2):(~AvB),(A>B)'>Imp2: ~AvB |- A&gt;B</option>
-			<option value='SI(NegImp1):~(A>B),(A&amp;~B)'>NegImp1: ~(A&gt;B) |- A&amp;~B</option>
-			<option value='SI(NegImp2):(A&amp;~B),~(A>B)'>NegImp2: A&amp;~B |- ~(A&gt;B)</option>
+			<option value='SI(DeM1):~(A&amp;B),(~Av~B)'>DeM1: ~(A&amp;B) -||- ~Av~B</option>
+			<option value='SI(DeM2):(~Av~B),(~A&amp;~B)'>DeM2: ~(AvB) |- ~A&amp;~B</option>
+			<option value='SI(DeM3):~(~Av~B),(A&amp;B)'>DeM3: ~(~Av~B) |- A&amp;B</option>
+			<option value='SI(DeM4):~(~A&amp;~B),(AvB)'>DeM4: ~(~A&amp;~B) |- AvB</option>
+			<option value='SI(Imp):(A>B),(~AvB)'>Imp1: A&gt;B -||- ~AvB</option>
+			<option value='SI(NegImp):~(A>B),(A&amp;~B)'>NegImp1: ~(A&gt;B) -||- A&amp;~B</option>
 			<option value='SI(Com1):(A&amp;B),(B&amp;A)'>Com1: A&amp;B |- B&amp;A</option>
 			<option value='SI(Com2):(AvB),(BvA)'>Com2: AvB |- BvA</option>
 			<option value='SI(Com3):(A&lt;&gt;B),(B&lt;&gt;A)'>Com3: A&lt;&gt;B |- B&lt;&gt;A</option>
-			<option value='SI(LEM):(Av~A)'>LEM: |- Av~A</option>
+			<option value='SI(Dist1):(A&amp;(BvC)),((A&amp;B)v(A&amp;C))'>Dist1: A&amp;(BvC) -||- (A&amp;B)v(A&amp;C)</option>
+			<option value='SI(Dist2):(Av(B&amp;C)),((AvB)&amp;(AvC))'>Dist2: Av(B&amp;C) -||- (AvB)&amp;(AvC)</option>
+			<option value='TI(LEM):(Av~A)'>LEM: |- Av~A</option>
 			<option value='SI(QS)'>QS: "Quantifier Shift"</option>
 			<option value='SI(AV)'>AV: "Alphabetic Variant"</option>
 			</select>
