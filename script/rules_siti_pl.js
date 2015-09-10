@@ -51,7 +51,7 @@ function ckSI(l,n) {
 
 // Checks bi-directional, i.e. equivalence, SI rules (DeM, Imp, NegImp, Dist)
 function ckSIbi(l,n) {
-	var flag = '[ERROR applying '+gRul(l.rul)+' to line(s) '+l.lin.join(',')+']: ';
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line '+l.lin.join(',')+']: ';
 	if(n==0) {fillND(l);}
 	
 	if(l.lin.length!=1) {
@@ -92,6 +92,74 @@ function ckCOM(l,n) {
 	l.seq = l.seq.map(function(x) {return x.replace("*",c1);});
 	ckSI(l,n);
 }
+
+
+// Checks SI(SDN1) 
+function ckSDN1(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line '+l.lin.join(',')+']: ';
+	if(n==0) {fillND(l);}
+
+	if(l.lin.length!=1) {
+		throw flag+'The rule is being applied to an inappropriate number of lines.';
+	}
+	var c = l.tr[1]; // main binary connective
+	var c2 = PROOF[l.lin[0]-1].tr[1]; // main binary connective in formula on rule line
+	if(c==undefined || c2==undefined || c!=c2) {nope();}
+	
+	var templates = ['(A'+c+'B)','(~~A'+c+'B)','(A'+c+'~~B)','(~~A'+c+'~~B)'];
+	var dmatch = get_match(templates,l.tr); // will hold the match for the formula on the rule line
+	var fmatch = get_match(templates,PROOF[l.lin[0]-1].tr); // will hold the match for the formula being derived
+	if(!fmatch[0] || !dmatch[0]) {nope();}
+	if(clash(fmatch[1].concat(dmatch[1]))) {nope();}
+	
+	x = areAvl(l.lin,l.avl);
+	if(x>=0) {
+		throw flag+'Rule line '+x+' is not available at this stage of the proof.  The following lines are available: '+l.avl.join(',');
+	}
+	function nope() {
+		throw flag+'The formula being derived does not follow by '+l.rul+'.';
+	}
+}
+
+// Checks SI(SDN2)
+function ckSDN2(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line '+l.lin.join(',')+']: ';
+	if(n==0) {fillND(l);}
+
+	if(l.lin.length!=1) {
+		throw flag+'The rule is being applied to an inappropriate number of lines.';
+	}
+	var c = l.tr[1][1]; // main binary connective
+	var c2 = PROOF[l.lin[0]-1].tr[1][1]; // main binary connective in formula on rule line
+	if(c==undefined || c2==undefined || c!=c2 || l.tr[0]!='~' || PROOF[l.lin[0]-1].tr[0]!='~') {nope();}
+	
+	var templates = ['~(A'+c+'B)','~(~~A'+c+'B)','~(A'+c+'~~B)','~(~~A'+c+'~~B)'];
+	var dmatch = get_match(templates,l.tr); // will hold the match for the formula on the rule line
+	var fmatch = get_match(templates,PROOF[l.lin[0]-1].tr); // will hold the match for the formula being derive
+	if(!fmatch[0] || !dmatch[0]) {nope();}
+	if(clash(fmatch[1].concat(dmatch[1]))) {nope();}
+	
+	x = areAvl(l.lin,l.avl);
+	if(x>=0) {
+		throw flag+'Rule line '+x+' is not available at this stage of the proof.  The following lines are available: '+l.avl.join(',');
+	}
+	function nope() {
+		throw flag+'The formula being derived does not follow by '+l.rul+'.';
+	}
+}
+
+// Helper for ckSDN1 and ckSDN2.  Takes an array of templates and a tree and tries
+// matching the tree to each of the templates.  Returns the match() output if there
+// is a match and an empty array [] otherwise.
+function get_match(templates,tree) {
+	var m = [false,[]];
+	for(var i=0;i<templates.length;i++) {
+		var x = match(parse(templates[i]),tree);
+		if(x[0]) {m = x;}
+	}
+	return m;
+}
+
 
 // String -> [String]
 // Extracts the SI sequent (as an array) from the 'value' attribute of the selected 
