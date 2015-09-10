@@ -4,15 +4,24 @@
 // Main SI checking function
 function ckSI(l,n) {
 	var flag = '[ERROR applying '+gRul(l.rul)+' to line(s) '+l.lin.join(',')+']: ';
-	if(n==0) {fillND(l);}
+	
+	if(n==0) { // fill remaining line attributes
+		if(l.seq.length==1) { // treat theorems special because they may begin a proof
+			l.sig = !PROOF.length ? [] : PROOF[l.cnt-2].sig.slice(0);
+			l.dth = l.sig.length;
+			l.avl = gtAvl(l);
+			l.frv = freeVars(l.tr);
+		} else {fillND(l);}
+	}
 	
 	if(l.lin.length!=(l.seq.length-1)) {
 		throw flag+'The rule is being applied to an inappropriate number of lines.';
 	}
-	if(l.seq.length==1) {
-		var x = match(parse(l.seq[0]),l.tr);
-		if(!x[0]) {nope();}
-		if(clash(x[1])) {nope();}
+	
+	if(l.seq.length==1) { // for theorems e.g. TI(LEM)
+		var x = match(parse(l.seq[0]),l.tr); // try to match line to sequent
+		if(!x[0]) {nope();} // match failed
+		if(clash(x[1])) {nope();} // dictionary returned by match is improper
 	}
 	if(l.seq.length==2) {
 		var x = match(parse(l.seq[0]),PROOF[l.lin[0]-1].tr);
@@ -46,7 +55,7 @@ function ckSIbi(l,n) {
 	if(n==0) {fillND(l);}
 	
 	if(l.lin.length!=1) {
-		throw flag+'The rule should be applied to one line.';
+		throw flag+'The rule is being applied to an inappropriate number of lines.';
 	}
 	
 	var m1 = match(parse(l.seq[0]),l.tr); // tests if target formula matches first part of sequent
@@ -66,24 +75,22 @@ function ckSIbi(l,n) {
 	}
 }
 
-// Checks TI rules
-function ckTI(l,n) {
-	var flag = '[ERROR applying '+gRul(l.rul)+']: ';
+// Checks SI(Com)
+function ckCOM(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line(s) '+l.lin.join(',')+']: ';
 	
-	if(!PROOF.length) {
-		l.sig = [];
-	} else {
-		l.sig = PROOF[l.cnt-2].sig.slice(0);
+	if(l.lin.length!=1){ 
+		throw flag+'The rule is being applied to an inappropriate number of lines.';
 	}
-	l.dth = l.sig.length;
-	l.avl = gtAvl(l);
-	l.frv = freeVars(l.tr);
 	
-	var x = match(parse(l.seq[0]),l.tr);
-	if(!x[0] || clash(x[1])) {
-		throw flag+ "The formula you entered is not a substitution instance of the theorem "+l.seq+".";
-	} // match failed or match "dictionary" is improper
+	var cn = ['&','v','<>'];
+	var c1 = l.tr[1]; // main binary connective in input line
+	var c2 = PROOF[l.lin-1].tr[1]; // main binary connective in rule line
+	if(c1==undefined || c2==undefined || c1!=c2) {throw flag+'The formula being derived does not follow by '+gRul(l.rul)+'.'}
+	if(cn.indexOf(c1)<0) {throw flag+c1+' is not a commutative connective.';}
 	
+	l.seq = l.seq.map(function(x) {return x.replace("*",c1);});
+	ckSI(l,n);
 }
 
 // String -> [String]

@@ -52,12 +52,12 @@ function ckRest(l,n) {
   	else if(r=='AI') {ckAI(l,n);}
   	else if(r=='AE') {ckAE(l,n);}
  	else if(r=='=I') {ckIDI(l,n);}
-  	else if(r=='=E') {ckIDE(l,n);}
-  	else if(r.indexOf('TI(LEM)')>0) {ckTI(l,n);}
-  	else if(r.indexOf('DeM')>0||r.indexOf('Imp')>0||r.indexOf('Dist')>0) {ckSIbi(l,n);} 
+  	else if(r=='=E') {ckIDE(l,n);} 
   	else if(r=='SI(QS)') {ckQS(l,n);}
   	else if(r=='SI(AV)') {ckAV(l,n);}
-  	else if(r.indexOf('SI')==0) {ckSI(l,n);}
+  	else if(r=='SI(Com)') {ckCOM(l,n);}
+  	else if(r.indexOf('DeM')>0||r.indexOf('Imp')>0||r.indexOf('Dist')>0) {ckSIbi(l,n);} // bidirectional SI sequents
+  	else if(r.indexOf('SI')==0||r.indexOf('TI')==0) {ckSI(l,n);} // other SI/TI sequents
  	else {throw "ERROR: The rule "+r+" you entered is not recognized.";}
 }
 
