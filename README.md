@@ -1,7 +1,7 @@
 FitchJS
 =======
 
-This program provides a web interface for users to construct proofs in a Fitch-style natural deduction system.  It is a modification of the LemmoNaDe program, and implements a similar rule set (based on the rules in [Graeme Forbes'](http://www.colorado.edu/philosophy/fac_forbes.shtml) textbook [Modern Logic](http://www.amazon.com/Modern-Logic-Text-Elementary-Symbolic/dp/0195080297)). The fitch proofs are drawn using the [D3.js](http://d3js.org/) library.  This program has not been extensively tested, so it likely still contains some bugs.  If you come across one, please let me know!
+FitchJS is a web app written in JavaScript that lets users to construct proofs in a Fitch-style natural deduction system.  It is a modification of the [LemmoNaDe](https://github.com/mrieppel/LemmoNaDe) program, and implements a similar rule set adapted to a Fitch notation (based on the rules in [Graeme Forbes'](http://www.colorado.edu/philosophy/fac_forbes.shtml) textbook [Modern Logic](http://www.amazon.com/Modern-Logic-Text-Elementary-Symbolic/dp/0195080297), in turn derived from Gentzen (1918)). The fitch proofs are drawn using the [D3.js](http://d3js.org/) library.  This program has not been extensively tested, so it likely still contains some bugs.  If you come across one, please email me!
 
 A live version of the program is [here](http://mrieppel.github.io/fitchjs/).
 
@@ -19,9 +19,9 @@ Here's a brief description of the content of the various javascript files:
 
 * `script/rules_siti_pl.js`: code implementing sequent/theorem introduction (SI/TI) rules.
 
-* `samples/`: contains some sample proofs that can be imported into the program.  The program will export proofs in LaTex format that compiles using Johan Klüwer's fitch.sty (also included).
+* `samples/`: contains some sample proofs that can be imported into the program.  The program will export proofs in LaTex markup that compiles using Johan Klüwer's fitch.sty (also included).
 
-* `script/ui.js`: code for the user interface, i.e. to dynamically change which menu item ("Construct Proof", "Export/Import", and "Reference") the user sees as active.
+* `script/ui.js`: code for the user interface, i.e. to dynamically change which menu item ("Construct Proof", "Export/Import", and "Reference") is active.
 
 * `script/userio.js`: code to capture user input (e.g. to begin a problem, append a line, import a proof etc.) and generate the appropriate output to the html page.  Also contains the global variable that holds the proof.
 

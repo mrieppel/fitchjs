@@ -503,7 +503,7 @@ function checkifdone() {
 	var prems = PROOF.filter(function(a) {return a.rul=="Premise";}).length;
 	var lastln = PROOF[PROOF.length-1];
 	if(lastln.frm==CONCLUSION[0] && ((prems==0 &&lastln.sig.length==0) || (prems>0 && same(lastln.sig,[1])))) {
-		errmess([2],"Your proof is complete!  Ready to submit.");
+		errmess([2],"Your proof is complete!  Ready to export.");
 		GOALS = [];
 		draw_goals();
 	} else {errmess([1],'');}
