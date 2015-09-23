@@ -22,16 +22,16 @@ function show(id) {
 	if(sel=='Assumption') {
 		document.getElementById('lin').value = '';
 		dth.style("display","inline");
-		var e = document.getElementById('dth');
-		e.focus();
-		e.value = 'Plus 1';
+// 		var e = document.getElementById('dth');
+// 		e.focus();
+// 		e.value = 'Plus 1';
 	} else if(sel == 'SI/TI') {
 		siti.style("display","inline");
 		lin.style("display","inline");
-		document.getElementById("siti").focus();
+		// document.getElementById("siti").focus();
 	} else if(sel!='--Select--' && sel!='Flag' && sel!='=I') {
 		lin.style("display","inline");
-		document.getElementById("lin").focus();
+		// document.getElementById("lin").focus();
 	}
 }
 

@@ -468,7 +468,6 @@ function extract_proof() {
 	}
 }
 
-
 // takes a string (from import_proof) and extracts the premises and conclusion
 // returns a two element array: first element an array of premises, second the 
 // conclusion string
@@ -486,7 +485,6 @@ function get_problem(str) {
 	}
 	return [str.slice(0,str.length-1),str[str.length-1]];
 }
-
 
 // clears the proof
 function clearall() {
@@ -508,7 +506,6 @@ function checkifdone() {
 		draw_goals();
 	} else {errmess([1],'');}
 }
-
 
 // Displays error message.  The second parameter is the message, and the first 
 // is an array, of either one or two elements.  The first element is 0 for displaying
