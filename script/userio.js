@@ -42,6 +42,7 @@ function setup_proof() {
 	var premises = document.getElementById('premises').value.replace(/ /g,'');
 	premises = premises=='' ? [] : premises.split(',');
 	var conclusion = document.getElementById('conclusion').value.replace(/ /g,'');
+	errmess([1],''); // clear error console
 	
 	try{
 		conclusion = check_goal(conclusion);
