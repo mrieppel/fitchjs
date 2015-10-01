@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.7.19)  8 JUN 2015 10:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.22)  30 SEP 2015 13:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **fitch.tex
 (./fitch.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 21 languages loaded.
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/base/article.cls
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 21 languages loaded.
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/base/size11.clo
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -25,7 +25,7 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 (./fitch.sty
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/mdwtools/mdwtab.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/mdwtools/mdwtab.sty
 Package: mdwtab 1998/04/28 1.9 Table typesetting with style
 \tab@state=\count87
 \tab@columns=\count88
@@ -44,30 +44,30 @@ Package: mdwtab 1998/04/28 1.9 Table typesetting with style
 \fn@notes=\box26
 \fn@width=\dimen111
 )
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
 )
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen112
 ))
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen113
 )
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count89
@@ -108,14 +108,14 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \fitchlineht=\skip48
@@ -123,6 +123,9 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \fitchcomind=\skip50
 \fitchnumwd=\skip51
 \c@fitchcounter=\count101
+)
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
 (./fitch.aux)
 \openout1 = `fitch.aux'.
@@ -140,16 +143,16 @@ LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Try loading font information for U+lasy on input line 11.
- (/usr/local/texlive/2014basic/texmf-dist/tex/latex/base/ulasy.fd
+ (/usr/local/texlive/2015basic/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 11.
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 11.
 
-(/usr/local/texlive/2014basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/local/texlive/2015basic/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
@@ -163,7 +166,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
 [1
 
-{/usr/local/texlive/2014basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{/usr/local/texlive/2015basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
@@ -175,21 +178,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
 [2] (./fitch.aux) ) 
 Here is how much of TeX's memory you used:
- 1257 strings out of 494522
- 14920 string characters out of 6167205
- 70962 words of memory out of 5000000
- 4546 multiletter control sequences out of 15000+600000
+ 1464 strings out of 494501
+ 16961 string characters out of 6167030
+ 72405 words of memory out of 5000000
+ 4771 multiletter control sequences out of 15000+600000
  8606 words of font info for 35 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  34i,10n,26p,228b,205s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014basic/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb>
-Output written on fitch.pdf (2 pages, 36989 bytes).
+</usr/local/texlive/2015basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msam10.pfb>
+Output written on fitch.pdf (2 pages, 43956 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 27 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
