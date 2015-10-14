@@ -353,6 +353,5 @@ function lastline(sig) {
 			return i+1;
 		}
 	}
-	console.log(l);
 	return l;
 }
