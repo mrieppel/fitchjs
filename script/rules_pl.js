@@ -27,7 +27,7 @@ function ckPR(l,n) {
 
 // Assumptions
 function ckAS(l,n) {
-	var flag = '[ERROR applying Assumption rule]: ';
+	var flag = '[ERROR with Assumption]: ';
 	var flag = l.sig;
 	
 	if(n==0) {
@@ -46,7 +46,7 @@ function ckAS(l,n) {
 	}
 	
 	if(l.lin.length>0) {
-		throw flag+'Assumption rule can\'t be applied to any lines.';
+		throw flag+'Assumptions should not cite any rule lines.';
 	}
 }
 
