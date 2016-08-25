@@ -41,8 +41,8 @@ function ckRest(l,n) {
   	else if(r=='vI') {return ckDJI(l,n);}
   	else if(r=='vE') {return ckDJE(l,n);}
   	else if(r=='~I') {return ckNI(l,n);}
+   	else if(r=='#I') {return ckFI(l,n);}
    	else if(r=='~E') {return ckNE(l,n);}
-   	else if(r=='DN') {return ckDN(l,n);}
    	else if(r=='EFQ') {return ckEFQ(l,n);}
   	else if(r=='<>I') {return ckBCI(l,n);}
   	else if(r=='<>E') {return ckBCE(l,n);}

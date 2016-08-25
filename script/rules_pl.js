@@ -294,8 +294,8 @@ function ckNI(l,n) {
 }
 
 
-// ~E: Negation Elimination
-function ckNE(l,n) {
+// #I: Falsum/Absurdity Introduction (formerly Negation Elimination)
+function ckFI(l,n) {
 	var flag = '[ERROR applying '+gRul(l.rul)+' to lines '+l.lin.join(',')+']: ';
 	if(n==0) {fillND(l);}
 	
@@ -314,9 +314,9 @@ function ckNE(l,n) {
 	}
 }
 
-// DN: Double Negation Elimination
-function ckDN(l,n) {
-	var flag = '[ERROR applying DN to line '+l.lin.join(',')+']: ';
+// ~E: Negation Elimination (formerly Double Negation Elimination)
+function ckNE(l,n) {
+	var flag = '[ERROR applying '+gRul(l.rul)+' to line '+l.lin.join(',')+']: ';
 	if(n==0) {fillND(l);}
 	
 	if(l.lin.length!=1) {
