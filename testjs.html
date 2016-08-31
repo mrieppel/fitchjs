@@ -270,7 +270,7 @@ NOTE: the program will accept formulas with a binary connective as the main conn
 <br>
 
 <div class="note">
-NOTE: the order in which  rule lines are cited is important for multi-line rules.  For example, in an application of conditional elimination with citation "j,k &rarr;E", the line j must be the conditional, and the line k must be its antecedent, <em>even if</em> line k actually <em>precedes</em> line j in the proof.  The only multi-line rules which are set up so that order doesn't matter are &amp;I and ~E.
+NOTE: the order in which  rule lines are cited is important for multi-line rules.  For example, in an application of conditional elimination with citation "j,k &rarr;E", the line j must be the conditional, and the line k must be its antecedent, <em>even if</em> line k actually <em>precedes</em> line j in the proof.  The only multi-line rules which are set up so that order doesn't matter are &amp;I and #I.
 </div>
 <br>
 
@@ -336,17 +336,26 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 
 		<td class='brd'>
 			<table class='rule'>
-				<tr><th colspan='2'>Rule of #I</th></tr>
+				<tr><th colspan='2'>Rule of &cuwed;I</th></tr>
 				<tr><td class='cntc'>j</td><td class='frmc'><div><p>~p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'>k</td><td class='frmc'><div><p>p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>&cuwed;</p></div></td><td class='rulc'><div>j,k ~E</div></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>&cuwed;</p></div></td><td class='rulc'><div>j,k &cuwed;I</div></td></tr>
 			</table>
 		</td>
 		
 	</tr>
 	<tr>
+	
+		<td class='brd'>
+			<table class='rule'>
+				<tr><th colspan='2'>Rule of ~E</th></tr>
+				<tr><td class='cntc'>j</td><td class='frmc'><div><p>~~p</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
+				<tr><td class='cntc'></td><td class='frmc'><div><p>p</p></div></td><td class='rulc'><div>j ~E</td></tr>
+			</table>
+		</td>
 	
 		<td class='brd'>
 			<table class='rule'>
@@ -370,6 +379,11 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 			
 		</td>
 
+
+
+	</tr>
+	<tr>
+	
 		<td class='brd'>
 			<table class='rule'>
 				<tr><th colspan='2'>Rule of &harr;I</th></tr>
@@ -384,10 +398,7 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 			</table>
 
 		</td>
-
-	</tr>
-	<tr>
-	
+		
 		<td class='brd'>
 			<table class='rule'>
 				<tr><th colspan='2'>Rule of &harr;E</th></tr>
@@ -396,15 +407,6 @@ NOTE: the order in which  rule lines are cited is important for multi-line rules
 				<tr><td class='cntc'>k</td><td class='frmc'><div><p>p</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
 				<tr><td class='cntc'></td><td class='frmc'><div><p>q</p></div></td><td class='rulc'><div>j,k &harr;E</div></td></tr>
-			</table>
-		</td>
-
-		<td class='brd'>
-			<table class='rule'>
-				<tr><th colspan='2'>Rule of ~E</th></tr>
-				<tr><td class='cntc'>j</td><td class='frmc'><div><p>~~p</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>:</p></div></td><td class='rulc'></td></tr>
-				<tr><td class='cntc'></td><td class='frmc'><div><p>p</p></div></td><td class='rulc'><div>j DN</td></tr>
 			</table>
 		</td>
 
