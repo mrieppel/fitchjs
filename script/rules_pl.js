@@ -158,10 +158,10 @@ function ckCNE(l,n) {
 		throw flag+'Rule must be applied to two lines.';
 	}
 	if(PROOF[l.lin[0]-1].tr.length!=3 || PROOF[l.lin[0]-1].tr[1]!='>') {
-		throw flag+'The first rule line must be a conditional.'
+		throw flag+'The first rule line must be a conditional. (Remember: cite the line of the conditional first, the line of its antecedent second.)'
 	}
 	if(PROOF[l.lin[1]-1].frm!=unparse(PROOF[l.lin[0]-1].tr[0])) {
-		throw flag+'The second rule line must be the antecedent of the conditional on the first rule line.';
+		throw flag+'The second rule line must be the antecedent of the conditional on the first rule line. (Remember: cite the line of the conditional first, the line of its antecedent second.)';
 	}
 	if(l.frm!=unparse(PROOF[l.lin[0]-1].tr[2])) {
 		throw flag+'The formula being derived must be the consequent of the conditional on the first rule line.';
