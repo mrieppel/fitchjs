@@ -21,13 +21,13 @@ function show(id) {
 	var lin = d3.selectAll('.lin').style("display","none");
 	if(sel=='Assumption') {
 		document.getElementById('lin').value = '';
-		dth.style("display","inline");
+		dth.style("display","table-cell");
 // 		var e = document.getElementById('dth');
 // 		e.focus();
 // 		e.value = 'Plus 1';
 	} else if(sel == 'SI/TI') {
-		siti.style("display","inline");
-		lin.style("display","inline");
+		siti.style("display","table-cell");
+		lin.style("display","table-cell");
 		// document.getElementById("siti").focus();
 	} else if(sel!='--Select--' && sel!='Flag' && sel!='=I') {
 		lin.style("display","inline");
