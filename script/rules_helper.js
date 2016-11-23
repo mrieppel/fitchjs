@@ -80,23 +80,24 @@ function frvList(l) {
 // Takes a parse tree of a quantified formula and a string to determine if the string
 // is an instance of the quantified formula.  If so returns the char of the instantial
 // variable/constant; if not, returns '_'.
-// NOTE: this will return '_' if the quantifier was vacuous, as in e.g. '(Ax)(Fa>Ga)',
-// since there is no instantial variable in such cases.
+// NOTE: if the quantifier is vacuous as in e.g. '(Ax)(Fa>Ga)' or '(Ax)P', it returns '+'
+// a "throwaway" char to indicate the String is an instance but involves no 
+// instantial variable
 function isInst(t,s) {
 	var tmp = mkTmp(t);
 	var b = blockedVars(tmp);
 	var stmp = unparse(tmp);
 	if(stmp.length!=s.length) {return '_';};
-	if(stmp.indexOf('_')<0) {return '_';}; // vacuous quantifier
+	if(s==stmp) {return '+';} // vacuous quantifier
 	var iv = s[stmp.indexOf('_')];
 	if(b.indexOf(iv)>=0) {return '_';}
 	return s==stmp.replace(/_/g,iv) ? iv : '_';
 }
 
 // Tree -> Tree
-// Takes a parse tree of a quantified formula and returns a string template for 
+// Takes a parse tree of a quantified formula and returns a template for 
 // creating instances (with '_' where the instantial variable/constant is to go).
-// So e.g. the parse tree of "Ex(Fx>Gxz)" will return a tree of "(F_>G_z)"
+// So e.g. the parse tree of "Ex(Fx>Rxz)" will return a tree of "(F_>R_z)"
 function mkTmp(ar) {
 	var v = ar[0][2];
 	return mk(ar[1]);
