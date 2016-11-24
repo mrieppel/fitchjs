@@ -23,7 +23,7 @@ function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv) {
 	this.lin = lin; // holds rule lines as an array (see linArr())
 	
 	// values below get initialized during validation
-	this.sig = sig; // holds line signature as array of ints
+	this.sig = sig; // holds line signature as array of ints (each subproof has a signature, and lines in the same subproof share a signature)
 	this.dth = dth; // holds line depth as int (NB dth = sig.length)
 	this.avl = avl; // holds the available lines (NB avl = [lines whose sig is a subset of this line's sig])
 	this.frv = frv; // hold free variables as a char array
@@ -454,7 +454,7 @@ function extract_proof() {
 	}
 	
 	function doSI(r) {
-		if(r.indexOf('SI')!=0) {return [];}
+		if(r.indexOf('SI')!=0 && r.indexOf('TI')!=0) {return [];}
 		var SIs = document.getElementById('siti').childNodes;
 		for(var i=1;i<SIs.length;i++) {
 			if(i%2==0) {continue;} // NOTE: need this because 0 and even elements of the childNodes of a <select> are #text, which have no value
@@ -501,7 +501,7 @@ function clearall() {
 function checkifdone() {
 	var prems = PROOF.filter(function(a) {return a.rul=="Premise";}).length;
 	var lastln = PROOF[PROOF.length-1];
-	if(lastln.frm==CONCLUSION[0] && ((prems==0 &&lastln.sig.length==0) || (prems>0 && same(lastln.sig,[1])))) {
+	if(lastln.frm==CONCLUSION[0] && ((prems==0 && lastln.sig.length==0) || (prems>0 && same(lastln.sig,[1])))) {
 		errmess([2],"Your proof is complete!  Ready to export.");
 		GOALS = [];
 		draw_goals();

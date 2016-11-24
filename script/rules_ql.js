@@ -60,7 +60,7 @@ function ckAI(l,n) {
 	if(iv=='_') {
 		throw flag+'The formula that concludes the cited subproof is not an instance of the universal being derived.';
 	}
-	if(iv!=PROOF[sa-1].frm) {
+	if(iv!='+' && iv!=PROOF[sa-1].frm) { // the first test is to allow vacuous quantification
 		throw flag+'The constant being generalized on must be the one flagged on the first rule line.';
 	}
 	if(l.frv.indexOf(iv)>=0) {
@@ -179,8 +179,7 @@ function ckIDI(l,n) {
 	if(l.tr.length!=3 || l.tr[1]!='=' || l.tr[0]!=l.tr[2]) {
 		throw flag+'The formula entered is not of the form \'t=t\'.';
 	}
-	
-	if(!PROOF.length) {l.sig = [l.cnt];} else { l.sig = PROOF[l.cnt-2].sig.slice(0);}
+	if(l.cnt==1) {l.sig = [];} else {l.sig = PROOF[l.cnt-2].sig.slice(0);}
 	l.dth = l.sig.length;
 	l.avl = gtAvl(l);
 	l.frv = freeVars(l.tr);
@@ -217,20 +216,16 @@ function ckQS(l,n) {
 	}
 	var rl = l.lin[0]-1;
 	if(l.tr.length!=2 || l.tr[1].length!=2 || PROOF[rl].tr.length!=2 || PROOF[rl].tr[1].length!=2) {
-		console.log('hi I failed the test');
 		nope();
 	}
 	if(isU(PROOF[rl].tr[0]) && isQ(PROOF[rl].tr[1][0])) {
-		console.log('in first case');
 		var rest = unparse(PROOF[rl].tr[1][1]);
 		var oq = PROOF[rl].tr[1][0];
 		var nq = flip(oq);
 		var frm = nq+'~'+rest;
-		console.log(frm);
 		if(l.frm!=frm) {nope();}
 		
 	} else if(isQ(PROOF[rl].tr[0]) && isU(PROOF[rl].tr[1][0])) {
-		console.log('in second case');
 		var rest = unparse(PROOF[rl].tr[1][1]);
 		var oq = PROOF[rl].tr[0];
 		var nq = flip(oq);

@@ -26,3 +26,5 @@ Here's a brief description of the content of the various javascript files:
 * `script/userio.js`: code to capture user input (e.g. to begin a problem, append a line, import a proof etc.) and generate the appropriate output to the html page.  Also contains the global variable that holds the proof.
 
 * `script/validate.js`: code to validate the user input, e.g. checking for well-formedness of input formulas, and to dispatch the user input to the appropriate rule checking code.
+
+Thanks to Fred Mesnard for bug reports.
