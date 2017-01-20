@@ -222,7 +222,7 @@ function export_proof() {
 		for(var i=0;i<a.length;i++) {
 			pre = i==a.length-1 ? pre+ofrm[i] : pre+ofrm[i]+', ';
 		}
-		pre = pre+' \u22A2 '+ocnl+'\r\n\r\n';
+		pre = pre+' |- '+ocnl+'\r\n\r\n';
 		ofrm = mkofrm(odth,ofrm,'  ');
 		var mc = max(ocnt)+2;
 		var mf = max(ofrm)+4;
@@ -307,7 +307,7 @@ function import_proof() {
 	
 	for(var i=0;i<prePROOF.length;i++) {
 		if(prePROOF[i].rul=='Premise' && problem[0].indexOf(prePROOF[i].frm)<0) {
-			return errmess([0],"ERROR: Your proof contains the following formula as a premise on line "+(i+1)+": "+prePROOF[i].frm+". This is not among the premises in the problem you entered.  Problem is:<br/>"+problem[0].join(',')+ " \u22A2 "+problem[1]);
+			return errmess([0],"ERROR: Your proof contains the following formula as a premise on line "+(i+1)+": "+prePROOF[i].frm+". This is not among the premises in the problem you entered.  Problem is:<br/>"+problem[0].join(',')+ " |- "+problem[1]);
 		}
 		try {validate_line(prePROOF[i]);} catch(err) {
 			PROOF = [];
@@ -350,7 +350,7 @@ function extract_proof() {
 		proof = tmp[1];
 		tmp = next_line(proof);
 	} // report error if no problem line found 
-	if(proof.length==0) {throw 'ERROR: proofs must begin with a problem line.  Something like "Problem: (P>Q), P \u22A2 Q"';}
+	if(proof.length==0) {throw 'ERROR: proofs must begin with a problem line.  Something like "Problem: (P>Q), P |- Q"';}
 	try{var problem = get_problem(tmp[0]);} catch(err) {return errmess([0],err);} // extracts problem from problem line
 	
 	while(proof.length!=0 && (tmp[0].length==0 || (tmp[0][0]!=' ' && !isInt(tmp[0][0])))) { // consumes until proof starts
@@ -474,6 +474,7 @@ function extract_proof() {
 // conclusion string
 function get_problem(str) {
 	str = str.replace('Problem: ',''); // remove the 'Problem: ' part
+	str = str.replace('|-',','); // remove the vdash
 	str = str.replace('\u22A2',','); // remove the vdash
 	str = str.replace(/ /g,''); // remove whitespace
 	str = str.split(','); // split on commas

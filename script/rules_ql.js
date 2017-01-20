@@ -41,10 +41,10 @@ function ckAI(l,n) {
 		sc = l.lin[2]; // line number of subproof conclusion
 	
 	if(PROOF[sa-1].rul!="Flag") {
-		throw flag+"The first rule line must be a Flag line.";
+		throw flag+"The subproof must begin with a Flag line.";
 	}
 	if(!same(PROOF[sa-1].sig,PROOF[sc-1].sig)) {
-		throw flag+'The two rule lines must be in the same subproof.';
+		throw flag+'The two rule lines you cited are not in the same subproof.';
 	}
 	
 	var ll = lastline(PROOF[sa-1].sig);
@@ -61,7 +61,7 @@ function ckAI(l,n) {
 		throw flag+'The formula that concludes the cited subproof is not an instance of the universal being derived.';
 	}
 	if(iv!='+' && iv!=PROOF[sa-1].frm) { // the first test is to allow vacuous quantification
-		throw flag+'The constant being generalized on must be the one flagged on the first rule line.';
+		throw flag+'The constant being generalized on must be the one flagged at the beginning of the subproof.';
 	}
 	if(l.frv.indexOf(iv)>=0) {
 		throw flag+'Every occurrence of the term \''+iv+'\' in line '+sc+' has to be replaced with the variable bound by the quantifier being introduced.';
@@ -123,7 +123,7 @@ function ckEE(l,n) {
 	var flag = '[ERROR applying '+gRul(l.rul)+' to lines '+linD(l.lin)+']: ';
 	
 	if(l.lin.length!=4 || l.lin[2]!="-") {
-		throw flag+'There is a problem with line citation.  The rule must be applied to one line and one subproof (citation of the form "j-k").';
+		throw flag+'There is a problem with line citation.  The rule must be applied to a line containing a existential statement and a subproof (citation of the form "j-k").';
 	}
 	
 	var ex = l.lin[0], // line of the existential
@@ -135,32 +135,33 @@ function ckEE(l,n) {
 	}
 	
 	var iv = isInst(PROOF[ex-1].tr,PROOF[sa-1].frm);
-	if(PROOF[sa-1].rul!='Assumption' || iv=='_') {
-		throw flag+'The second rule line is either not an assumption, or not an instance of the existential formula on the first rule line.';
-	}
-		
+	
 	if(!same(PROOF[sa-1].sig,PROOF[sc-1].sig)) {
-		throw flag+'The second and third rule lines must be in the same subproof.';
+		throw flag+'The lines'+sa+'-'+sc+' you cited are not part of the same subproof.';
+	}
+	
+	if(PROOF[sa-1].rul!='Assumption' || iv=='_') {
+		throw flag+'The first line of the subproof you cited is either not an assumption, or not an instance of the existential formula on the first rule line.';
 	}
 		
 	var ll = lastline(PROOF[sa-1].sig);
 	if(ll!=sc) {
-		throw flag+'The third rule line must be the last line of the subproof beginning with the assumption line '+sa+".";
+		throw flag+'Line '+sc+' is not the last line of the subproof beginning with the assumption line '+sa+".";
 	}
 		
 	if(PROOF[sc-1].frm!=l.frm) {
-		throw flag+'The formula being derived must match the formula on the third rule line.';
+		throw flag+'The formula being derived must match the last formula in the subproof you cited.';
 	}
 		
 	if(n==0) {fillD(l,sc);} // set dth, sig, avl, and frv properties
 		
 	if(l.frv.indexOf(iv)>=0) {
-		throw flag+'The term \''+iv+'\' introduced in the assumption cannot occur in the formula being derived.';
+		throw flag+'The individual constant \''+iv+'\' introduced in the assumption on line '+sa+' cannot occur in the formula being derived.';
 	}
 	
 	var freevars = frvList(PROOF[sa-1].avl);
 	if(freevars.indexOf(iv)>=0) {
-		throw flag+'Flagging violation.  The term \''+iv+'\' introduced in the assumption already occurs in a line available to that assumption.'
+		throw flag+'Flagging violation.  The individual constant \''+iv+'\' introduced in the assumption already occurs in a line available to that assumption.'
 	}	
 	
 	if(!same(l.sig,PROOF[sc-1].sig.slice(0,PROOF[sc-1].sig.length-1))) {

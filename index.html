@@ -128,6 +128,7 @@ THE SOFTWARE.
 			<option value='SI(PMI1):A,(B&gt;A)'>PMI1: A |- B&gt;A</option>
 			<option value='SI(PMI2):~A,(A&gt;B)'>PMI2: ~A |- A&gt;B</option>
 			<option value='SI(DN+):A,~~A'>DN+: A |- ~~A</option>
+			<option value='SI(EFQ):#,A'>EFQ: # |- A</option>
 			<option value='SI(DeM1):~(A&amp;B),(~Av~B)'>DeM1: ~(A&amp;B) -||- ~Av~B</option>
 			<option value='SI(DeM2):~(AvB),(~A&amp;~B)'>DeM2: ~(AvB) -||- ~A&amp;~B</option>
 			<option value='SI(DeM3):~(~Av~B),(A&amp;B)'>DeM3: ~(~Av~B) -||- A&amp;B</option>
@@ -137,9 +138,9 @@ THE SOFTWARE.
 			<option value='SI(Com):(A*B),(B*A)'>Com: A*B |- B*A</option>
 			<option value='SI(Dist1):(A&amp;(BvC)),((A&amp;B)v(A&amp;C))'>Dist1: A&amp;(BvC) -||- (A&amp;B)v(A&amp;C)</option>
 			<option value='SI(Dist2):(Av(B&amp;C)),((AvB)&amp;(AvC))'>Dist2: Av(B&amp;C) -||- (AvB)&amp;(AvC)</option>
-			<option value='TI(LEM):(Av~A)'>LEM: |- Av~A</option>
 			<option value='SI(SDN1)'>SDN1: A*B pattern</option>
 			<option value='SI(SDN2)'>SDN2: ~(A*B) pattern</option>
+			<option value='TI(LEM):(Av~A)'>LEM: |- Av~A</option>
 			<option value='SI(QS)'>QS: "Quantifier Shift"</option>
 			<!-- 
 <option value='SI(AV)'>AV: "Alphabetic Variant"</option>
@@ -231,10 +232,10 @@ NOTE: the program will accept formulas with a binary connective as the main conn
 			<tr><td>Disjunction</td><td>v</td></tr>
 			<tr><td>Conditional</td><td>&gt;</td></tr>
 			<tr><td>Biconditional</td><td>&lt;&gt;</td></tr>
+			<tr><td>Absurdity</td><td>#</td></tr>
 			<tr><td>Existential Quantifier</td><td>E</td></tr>
 			<tr><td>Universal Quantifier</td><td>A</td></tr>
 			<tr><td>Identity Relation</td><td>=</td></tr>
-			<tr><td>Absurdity</td><td>#</td></tr>
 		</table>
 
 		<table class='info'>
