@@ -6,7 +6,7 @@
 </head>
 <body>
 <pre>
-Problem: (P > Q) ⊢ (P > (A > Q))
+Problem: (P > Q) |- (P > (A > Q))
 
 1  |_  (P > Q)          Premise
 2  | |_  P              Assumption
@@ -16,7 +16,7 @@ Problem: (P > Q) ⊢ (P > (A > Q))
 6  |   (P > (A > Q))    2-5  >I
 
 
-Problem: (A v B) ⊢ ~(~A & ~B)
+Problem: (A v B) |- ~(~A & ~B)
 
 1   |_  (A v B)        Premise
 2   | |_  (~A & ~B)    Assumption
@@ -30,7 +30,7 @@ Problem: (A v B) ⊢ ~(~A & ~B)
 10  |   ~(~A & ~B)     2-9  ~I
 
 
-Problem: (A v (Ex)Fx) ⊢ (Ex)(A v Fx)
+Problem: (A v (Ex)Fx) |- (Ex)(A v Fx)
 
 1   |_  (A v (Ex)Fx)        Premise
 2   | |_  A                 Assumption
@@ -44,7 +44,7 @@ Problem: (A v (Ex)Fx) ⊢ (Ex)(A v Fx)
 10  |   (Ex)(A v Fx)        1,2-4,5-9  vE
 
 
-Problem:  ⊢ (Ax)(Ay)((Fx & ~Fy) > ~x=y)
+Problem:  |- (Ax)(Ay)((Fx & ~Fy) > ~x=y)
 
 1   |_  a                            Flag
 2   | |_  b                          Flag
