@@ -1,5 +1,6 @@
 body {
 font-family: "Open Sans", Verdana, Arial, Helvetica, sans-serif;
+color:#444444;
 }
 
 /* githublink things */
@@ -20,10 +21,10 @@ vertical-align:bottom;
 #githublink a:hover {color:#999;text-decoration:none;}  /* mouse over link */
 #githublink a:active {color:#999;text-decoration:none;}  /* selected link */
 
-a:link {color:blue;text-decoration:none;}      /* unvisited link */
-a:visited {color:blue;text-decoration:none;}  /* visited link */
-a:hover {color:blue;text-decoration:none;}  /* mouse over link */
-a:active {color:blue;text-decoration:none;}  /* selected link */
+a:link {color:#4B2EDE;text-decoration:none;}      /* unvisited link */
+a:visited {color:#4B2EDE;text-decoration:none;}  /* visited link */
+a:hover {color:#4B2EDE;text-decoration:none;}  /* mouse over link */
+a:active {color:#4B2EDE;text-decoration:none;}  /* selected link */
 
 
 /* menu things */
@@ -39,14 +40,14 @@ font-size:12pt;
 
 #menut td {
 width:140px;
-border-top:solid 1px black;
-border-right:solid 1px black;
-border-left:solid 1px black;
+border-top:solid 1px #444444;
+border-right:solid 1px #444444;
+border-left:solid 1px #444444;
 padding:5px;
 }
 
 #menu {
-border:solid 1px black;
+border:solid 1px #444444;
 padding:10px;
 margin-bottom:10px;
 font-size:10pt;
@@ -132,24 +133,24 @@ display:none;
 
 /* Class .info is for the syntax reference */
 
-#reft table.info {
+table.info {
 float:left;
 border-collapse:collapse;
 margin-right:1em;
 margin-bottom:2em;
 }
 
-#reft table.info th {
+table.info th {
 border:solid 1px green;
 text-align:left;
-border: 1px solid black;
+border: 1px solid #444444;
 padding: 4px;
 margin:0px;
 }
 
-#reft table.info td {
+table.info td {
 text-align: left;
-border: 1px solid black;
+border: 1px solid #444444;
 padding: 4px;
 margin:0px;
 }
@@ -169,7 +170,7 @@ margin-bottom:1em;
 
 #reft table.rulcont td.brd {
 vertical-align:top;
-border:solid 1px black;
+border:solid 1px #444444;
 width:250px;
 }
 
@@ -198,13 +199,13 @@ padding:0px;
 
 td.frmc div {
 margin:0px;
-border-left:solid 1px black;
+border-left:solid 1px #444444;
 margin-left:1em;
 position:relative;
 }
 
 td.frmc div.fbar, td.frmc div.fbr {
-border-bottom:solid 1px black;
+border-bottom:solid 1px #444444;
 border-left:none;
 margin:0;
 position:absolute;
@@ -263,4 +264,10 @@ path {
 
 rect {
  fill:none;
+}
+
+#refnote {
+clear:both;
+font-size:10pt;
+padding-top:20px;
 }
