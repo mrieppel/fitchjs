@@ -27,4 +27,6 @@ Here's a brief description of the content of the various javascript files:
 
 * `script/validate.js`: code to validate the user input, e.g. checking for well-formedness of input formulas, and to dispatch the user input to the appropriate rule checking code.
 
-Thanks to Fred Mesnard for bug reports.
+Thanks to Fred Mesnard for bug reports!
+
+(c) Michael Rieppel 2015-2017. Released under the MIT License.  See LICENSE above for more information.
