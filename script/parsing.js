@@ -220,8 +220,8 @@ function ptou(s) {
 		case '\u2192' : return '>';
 		case '<>': return '\u2194';
 		case '\u2194' : return '<>';
-		case '#': return '\u22cf';
-		case '\u22cf' : return '#';
+		case '#': return '\u22A5';
+		case '\u22A5' : return '#';
 		case 'A': return '\u2200';
 		case '\u2200': return 'A';
 		case 'E': return '\u2203';
@@ -238,7 +238,7 @@ function utox(c) {
 		case '\u2228' : return '\\lor';
 		case '\u2192' : return '\\rightarrow';
 		case '\u2194' : return '\\leftrightarrow';
-		case '\u22cf' : return '\\curlywedge';
+		case '\u22A5' : return '\\bot';
 		case '\u2200': return '\\forall';
 		case '\u2203' : return '\\exists';
 		default: return c;
