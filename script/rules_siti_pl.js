@@ -13,7 +13,7 @@ function ckSI(l,n) {
 			l.frv = freeVars(l.tr);
 		} else {fillND(l);}
 	}
-	
+	console.log(l.lin, l.seq);
 	if(l.lin.length!=(l.seq.length-1)) {
 		throw flag+'The rule is being applied to an inappropriate number of lines.';
 	}

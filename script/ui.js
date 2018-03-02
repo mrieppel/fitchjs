@@ -38,7 +38,7 @@ function show(id) {
 function exp(x) {
 	var el = document.getElementById(x);
 	var tr = document.getElementById(x+'trigger');
-	var dic = {sync:'Symbols', srulc:'Rules for Sentential Logic', qrulc:'Rules for Quantificational Logic', exc: 'Examples'};
+	var dic = {sync:'Symbols', srulc:'Rules for Sentential Logic', qrulc:'Rules for Quantificational Logic', drulc:'Derived Rules', exc: 'Examples'};
 	if(el.style.display=='none' || el.style.display=='' ) {
 		el.style.display = 'block';
 		tr.innerHTML = '[–] '+dic[x];

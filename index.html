@@ -86,7 +86,7 @@ THE SOFTWARE.
 	<tr>
 		<td>Formula:</td>
 		<td>Rule:</td>
-		<td class='siti'>SI/TI Rule:</td>
+		<td class='siti'>Derived Rule:</td>
 		<td class='dth'>Depth</td>
 		<td class='lin'>Lines:</td>
 		<td></td>
@@ -117,31 +117,31 @@ THE SOFTWARE.
 			<option value='AE'>AE</option>
 			<option value='=I'>=I</option>
 			<option value='=E'>=E</option>
-			<option value='SI/TI'>SI/TI</option>
+			<option value='SI/TI'>Derived Rules</option>
 			</select>
 		</td>
 		<td class='siti'>
 			<select id='siti'>
-			<option value='SI(DS1):(AvB),~A,B'>DS1: AvB, ~A |- B</option>
-			<option value='SI(DS2):(AvB),~B,A'>DS2: AvB, ~B |- A</option>
-			<option value='SI(MT):(A&gt;B),~B,~A'>MT: A&gt;B, ~B |- ~A</option>
-			<option value='SI(PMI1):A,(B&gt;A)'>PMI1: A |- B&gt;A</option>
-			<option value='SI(PMI2):~A,(A&gt;B)'>PMI2: ~A |- A&gt;B</option>
-			<option value='SI(DN+):A,~~A'>DN+: A |- ~~A</option>
-			<option value='SI(EFQ):#,A'>EFQ: # |- A</option>
-			<option value='SI(DeM1):~(A&amp;B),(~Av~B)'>DeM1: ~(A&amp;B) -||- ~Av~B</option>
-			<option value='SI(DeM2):~(AvB),(~A&amp;~B)'>DeM2: ~(AvB) -||- ~A&amp;~B</option>
-			<option value='SI(DeM3):~(~Av~B),(A&amp;B)'>DeM3: ~(~Av~B) -||- A&amp;B</option>
-			<option value='SI(DeM4):~(~A&amp;~B),(AvB)'>DeM4: ~(~A&amp;~B) -||- AvB</option>
-			<option value='SI(Imp):(A>B),(~AvB)'>Imp: A&gt;B -||- ~AvB</option>
-			<option value='SI(NegImp):~(A>B),(A&amp;~B)'>NegImp: ~(A&gt;B) -||- A&amp;~B</option>
-			<option value='SI(Com):(A*B),(B*A)'>Com: A*B |- B*A</option>
-			<option value='SI(Dist1):(A&amp;(BvC)),((A&amp;B)v(A&amp;C))'>Dist1: A&amp;(BvC) -||- (A&amp;B)v(A&amp;C)</option>
-			<option value='SI(Dist2):(Av(B&amp;C)),((AvB)&amp;(AvC))'>Dist2: Av(B&amp;C) -||- (AvB)&amp;(AvC)</option>
-			<option value='SI(SDN1)'>SDN1: A*B pattern</option>
-			<option value='SI(SDN2)'>SDN2: ~(A*B) pattern</option>
-			<option value='TI(LEM):(Av~A)'>LEM: |- Av~A</option>
-			<option value='SI(QS)'>QS: "Quantifier Shift"</option>
+			<option value='(DS1):(AvB),~A,B'>DS1: AvB, ~A |- B</option>
+			<option value='(DS2):(AvB),~B,A'>DS2: AvB, ~B |- A</option>
+			<option value='(MT):(A&gt;B),~B,~A'>MT: A&gt;B, ~B |- ~A</option>
+			<option value='(PMI1):A,(B&gt;A)'>PMI1: A |- B&gt;A</option>
+			<option value='(PMI2):~A,(A&gt;B)'>PMI2: ~A |- A&gt;B</option>
+			<option value='(DN+):A,~~A'>DN+: A |- ~~A</option>
+			<option value='(EFQ):#,A'>EFQ: # |- A</option>
+			<option value='(DeM1):~(A&amp;B),(~Av~B)'>DeM1: ~(A&amp;B) -||- ~Av~B</option>
+			<option value='(DeM2):~(AvB),(~A&amp;~B)'>DeM2: ~(AvB) -||- ~A&amp;~B</option>
+			<option value='(DeM3):~(~Av~B),(A&amp;B)'>DeM3: ~(~Av~B) -||- A&amp;B</option>
+			<option value='(DeM4):~(~A&amp;~B),(AvB)'>DeM4: ~(~A&amp;~B) -||- AvB</option>
+			<option value='(Imp):(A>B),(~AvB)'>Imp: A&gt;B -||- ~AvB</option>
+			<option value='(NegImp):~(A>B),(A&amp;~B)'>NegImp: ~(A&gt;B) -||- A&amp;~B</option>
+			<option value='(Com):(A*B),(B*A)'>Com: A*B |- B*A</option>
+			<option value='(Dist1):(A&amp;(BvC)),((A&amp;B)v(A&amp;C))'>Dist1: A&amp;(BvC) -||- (A&amp;B)v(A&amp;C)</option>
+			<option value='(Dist2):(Av(B&amp;C)),((AvB)&amp;(AvC))'>Dist2: Av(B&amp;C) -||- (AvB)&amp;(AvC)</option>
+			<option value='(SDN1)'>SDN1: A*B pattern</option>
+			<option value='(SDN2)'>SDN2: ~(A*B) pattern</option>
+			<option value='(LEM):(Av~A)'>LEM: |- Av~A</option>
+			<option value='(QS)'>QS: "Quantifier Shift"</option>
 			<!-- 
 <option value='SI(AV)'>AV: "Alphabetic Variant"</option>
  -->
@@ -516,6 +516,48 @@ NOTE: as with the propositional rules, the order in which lines are cited matter
 
 </td>
 </tr>
+
+<tr>
+<td><a href='javascript:void(0);' onclick='exp("drulc");' id='drulctrigger'>[+] Derived Rules</a></td>
+</tr>
+
+<tr>
+<td id='drulc'>
+
+	<br>
+
+	<div class="note">
+	NOTE: (DS1), (DS2), and (MT) involve more than one line, and here the order in which  rule lines are cited is important.  E.g. to use (MT) 'A>B, ~B |- ~A', the line number of the conditional A>B needs to be cited first, and that of the negated consequent ~B second.
+	</div>
+	
+	<ul style="list-style-type: none;">
+	<li>(DS1): AvB, ~A |- B</li>
+	<li>(DS2): AvB, ~B |- A</li>
+	<li>(MT): A&gt;B, ~B |- ~A</li>
+	<li>(PMI1): A |- B&gt;A</li>
+	<li>(PMI2): ~A |- A&gt;B</li>
+	<li>(DN+): A |- ~~A</li>
+	<li>(EFQ): # |- A</li>
+	<li>(DeM1): ~(A&amp;B) -||- ~Av~B</li>
+	<li>(DeM2): ~(AvB) -||- ~A&amp;~B</li>
+	<li>(DeM3): ~(~Av~B) -||- A&amp;B</li>
+	<li>(DeM4): ~(~A&amp;~B) -||- AvB</li>
+	<li>(Imp): A&gt;B -||- ~AvB</li>
+	<li>(NegImp): ~(A&gt;B) -||- A&amp;~B</li>
+	<li>(Com): A*B |- B*A</li>
+	<li>(Dist1): A&amp;(BvC) -||- (A&amp;B)v(A&amp;C)</li>
+	<li>(Dist2): Av(B&amp;C) -||- (AvB)&amp;(AvC)</li>
+	<li>(SDN1): A*B pattern</li>
+	<li>(SDN2): ~(A*B) pattern</li>
+	<li value='(LEM):(Av~A)'>LEM: |- Av~A</li>
+	</ul>
+	
+
+
+
+</td>
+</tr>
+
 
 <tr>
 	<td><a href='javascript:void(0);' onclick='exp("exc");' id='exctrigger'>[+] Examples</a></td>

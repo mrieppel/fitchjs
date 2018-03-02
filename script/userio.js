@@ -5,9 +5,11 @@ README:
 The function Line(..) immediately below shows the attributes Line objects are expected to have.  Below that are global variables that hold the proof, conclusion aimed for, and sub-goal lines the user enters.
 
 Internally, the program uses the "plain" notation, e.g. '>' and '<>', rather than the unicode variants.  Unicode variants are used (i) when writing proof lines to the drv sig, (ii) when exporting the proof (if the user has selected "pretty print"), and (iii) for parts of error messages written to the error console.  Proofs can be imported in plain notation.  The transformations between unicode and plain notation are done via the functions richardify() and gRul().  The parser can parse formulas in either notation, but again, the "internals" of the program expect to encounter formulas in the plain notation.
+
+NOTE 3.2.18: internally, the program uses the terminology of "SI/TI" rules ("Sequent/Theorem Introduction") for what in the user interface are called "Derived Rules."
 */
 
-// To uglify: cat script/draw.js script/parsing.js script/rules_helper.js script/rules_pl.js script/rules_ql.js script/rules_siti_pl.js script/ui.js script/userio.js script/validate.js | uglifyjs -m -o script/fitch.min.js
+
 
 
 // PROOF LINE CONSTRUCTOR AND PROOF ARRAY
@@ -454,7 +456,7 @@ function extract_proof() {
 	}
 	
 	function doSI(r) {
-		if(r.indexOf('SI')!=0 && r.indexOf('TI')!=0) {return [];}
+		if(r.indexOf('(')<0) {return [];}
 		var SIs = document.getElementById('siti').childNodes;
 		for(var i=1;i<SIs.length;i++) {
 			if(i%2==0) {continue;} // NOTE: need this because 0 and even elements of the childNodes of a <select> are #text, which have no value

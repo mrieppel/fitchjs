@@ -52,14 +52,14 @@ function ckRest(l,n) {
   	else if(r=='AE') {return ckAE(l,n);}
  	else if(r=='=I') {return ckIDI(l,n);}
   	else if(r=='=E') {return ckIDE(l,n);} 
-  	else if(r=='SI(EFQ)') {return ckEFQ(l,n);}
-  	else if(r=='SI(QS)') {return ckQS(l,n);}
-  	else if(r=='SI(AV)') {return ckAV(l,n);}
-  	else if(r=='SI(Com)') {return ckCOM(l,n);}
-  	else if(r=='SI(SDN1)') {return ckSDN1(l,n);}
-  	else if(r=='SI(SDN2)') {return ckSDN2(l,n);}
+  	else if(r=='(EFQ)') {return ckEFQ(l,n);}
+  	else if(r=='(QS)') {return ckQS(l,n);}
+  	else if(r=='(AV)') {return ckAV(l,n);}
+  	else if(r=='(Com)') {return ckCOM(l,n);}
+  	else if(r=='(SDN1)') {return ckSDN1(l,n);}
+  	else if(r=='(SDN2)') {return ckSDN2(l,n);}
   	else if(r.indexOf('DeM')>0||r.indexOf('Imp')>0||r.indexOf('Dist')>0) {return ckSIbi(l,n);} // bidirectional SI sequents
-  	else if(r.indexOf('SI')==0||r.indexOf('TI')==0) {return ckSI(l,n);} // other SI/TI sequents
+  	else if(r.indexOf('(')==0) {return ckSI(l,n);} // other SI/TI sequents
  	else {throw "ERROR: The rule "+r+" you entered is not recognized.";}
 }
 
