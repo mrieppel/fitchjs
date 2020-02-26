@@ -1,7 +1,7 @@
 FitchJS
 =======
 
-FitchJS is a web app written in JavaScript that lets users to construct proofs in a Fitch-style natural deduction system, and export verified proofs in plain text or LaTeX.  It is a modification of the [LemmoNaDe](https://github.com/mrieppel/LemmoNaDe) program, and implements a similar rule set adapted to a Fitch notation. The fitch proofs are drawn using the [D3.js](http://d3js.org/) library.  If you come across any bugs, please email at: mrieppel at gmail dot com.
+FitchJS is a web app written in JavaScript that lets users construct proofs in a Fitch-style natural deduction system, and export verified proofs in plain text or LaTeX.  It is a modification of the [LemmoNaDe](https://github.com/mrieppel/LemmoNaDe) program, and implements a similar rule set adapted to a Fitch notation. I am no longer actively developing this program. [FitchFX](https://github.com/mrieppel/FitchFX) is a newer version, with a slightly different syntax for quantifiers and a different set of rules (corresponding to those in my remix of the [forall x logic textbook](https://github.com/mrieppel/forallxsyr)).
 
 A live version of the program is [here](http://mrieppel.github.io/fitchjs/).
 
