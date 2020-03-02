@@ -68,6 +68,7 @@ function setup_proof() {
 	disp('app');
 	draw_conclusion();
 	draw();
+	document.getElementById('phi251msg').innerHTML = "";
 }
 
 // Checks and appends line user is attempting to enter
