@@ -10,11 +10,11 @@ A ::= '#' | T=T | P | P T | P T T | P T T T ...
 P ::= 'A' | 'B' | 'C' | 'D' | ...
 T ::= C | V
 C :: = 'a' | 'b' | 'c' | 'd'
-V :: = 'w' | 'x' | 'y' | 'z' 
+V :: = 'w' | 'x' | 'y' | 'z'
 */
 
-// Tree -> String		
-// Takes a parse tree (as output by the parse function below) and returns the 
+// Tree -> String
+// Takes a parse tree (as output by the parse function below) and returns the
 // string it is a parse tree of.
 function unparse(ar) {
 	if(ar.length==2 && (isQ(ar[0]) || isU(ar[0]))) {
@@ -77,7 +77,7 @@ function isA(s) {
 	 		}
 	 		return true;
 	 	}
-		
+
 	} else {return false;}
 }
 
@@ -109,7 +109,7 @@ function isU(s) {
 // String -> [String]
 // takes a string beginning with '(' and ending with ')', and determines if there is a
 // binary connective enclosed only by the outermost parentheses.  If so, returns an array
-// with the string to the left and the string to the right of the binary connective; 
+// with the string to the left and the string to the right of the binary connective;
 // otherwise returns an array of three undefined's.
 function gSub(s) {
 	var stk = [];
@@ -121,7 +121,7 @@ function gSub(s) {
 			stk.pop();
 		} else if(stk.length==1 && (l = isB(s.substring(i)))>0) {
 			return [s.substring(1,i),s.substring(i,i+l),s.substring(i+l,s.length-1)];
-		}	
+		}
 	}
 	return [undefined,undefined,undefined];
 }
@@ -130,7 +130,7 @@ function gSub(s) {
 // takes a string and determines if it begins with a binary connective.  If so, returns
 // the length of the connective, otherwise returns 0.
 function isB(s) {
-	var bc = ['&','v','>','<>','\u2227','\u2228','\u2283','\u2261'];
+	var bc = ['&','v','>','<>','\u2227','\u2228','\u2192','\u2194'];
 	for(var i=0;i<bc.length;i++) {
 		if(s.indexOf(bc[i]) == 0) {
 			return bc[i].length;
@@ -168,7 +168,7 @@ function richardify(s) {
 	if(s=="") {
 		return s;
 	} else if(isQ(s)) {
-		return s[0]+ptou(s[1])+s[2]+s[3]+richardify(s.substring(4,s.length))	
+		return s[0]+ptou(s[1])+s[2]+s[3]+richardify(s.substring(4,s.length))
 	} else if(isU(s[0])) {
 		return ptou(s[0])+richardify(s.substring(1,s.length));
 	} else if(s[0] =='(' && s[s.length-1]==')') {
