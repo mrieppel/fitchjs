@@ -23,7 +23,7 @@ function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv) {
 	this.rul = rul; // holds the rule as string
 	this.seq = seq; // holds sequents in case of an SI rule
 	this.lin = lin; // holds rule lines as an array (see linArr())
-	
+
 	// values below get initialized during validation
 	this.sig = sig; // holds line signature as array of ints (each subproof has a signature, and lines in the same subproof share a signature)
 	this.dth = dth; // holds line depth as int (NB dth = sig.length)
@@ -33,7 +33,7 @@ function Line(cnt,frm,tr,rul,seq,lin,sig,dth,avl,frv) {
 
 var PROOF = []; // array to hold proof lines
 var CONCLUSION = []; // array to hold conclusion of proof
-var GOALS = []; // array to hold goal formulas 
+var GOALS = []; // array to hold goal formulas
 
 
 // FUNCTIONS FOR THE USER INTERFACE
@@ -45,7 +45,7 @@ function setup_proof() {
 	premises = premises=='' ? [] : premises.split(',');
 	var conclusion = document.getElementById('conclusion').value.replace(/ /g,'');
 	errmess([1],''); // clear error console
-	
+
 	try{
 		conclusion = check_goal(conclusion);
 		CONCLUSION.push(conclusion);
@@ -68,7 +68,6 @@ function setup_proof() {
 	disp('app');
 	draw_conclusion();
 	draw();
-	document.getElementById('phi251msg').innerHTML = "";
 }
 
 // Checks and appends line user is attempting to enter
@@ -85,7 +84,7 @@ function append_line() {
 		r = getSeqHead(r);
 	}
 	var l = new Line(c,f,t,r,s,l);
-	
+
 	if(l.rul=='Assumption') {
 		l.sig = document.getElementById('dth').value=="Plus 1" ? '+' : '-';
 	}
@@ -127,7 +126,7 @@ function clear_app() {
 	show('rul');
 }
 
-// clear the gfrm input field 
+// clear the gfrm input field
 function clear_gfrm() {
 	document.getElementById('gfrm').value = '';
 }
@@ -136,7 +135,7 @@ function clear_gfrm() {
 // checks goal formula and returns validated formula
 function check_goal(f) {
 	var t = parse(f);
-	
+
 	if(t.length==0) {
 		f = '('+f+')';
 		t = parse(f);
@@ -207,18 +206,18 @@ function export_proof() {
 	var plain = document.getElementById('plain').checked;
 	var pretty = document.getElementById('pretty').checked;
 	var latex = document.getElementById('latex').checked;
-	
+
 	var ocnt = PROOF.map(function(a) {return a.cnt.toString();});
 	var ofrm = pretty ? PROOF.map(function(a) {return padBCs(richardify(a.frm));}) : PROOF.map(function(a) {return padBCs(a.frm);});
-	ofrm = latex ? PROOF.map(function(a) {return latexify(richardify(a.frm));}) : ofrm;	
+	ofrm = latex ? PROOF.map(function(a) {return latexify(richardify(a.frm));}) : ofrm;
 	var ocnl = pretty ? padBCs(richardify(CONCLUSION[0])) : padBCs(CONCLUSION[0]);
 	ocnl = latex ? latexify(richardify(CONCLUSION[0])) : ocnl;
 	var pre = '';
-	var olin = PROOF.map(function(a) {return linD(a.lin);}); 
+	var olin = PROOF.map(function(a) {return linD(a.lin);});
 	var orul = (pretty || latex) ? PROOF.map(function(a) {return gRul(a.rul);}) : PROOF.map(function(a) {return a.rul;});
-	var odth = latex ? mkodth('\\fa ','\\fh ') : mkodth('| ','|_'); 
+	var odth = latex ? mkodth('\\fa ','\\fh ') : mkodth('| ','|_');
 	var proof = '';
-	
+
 	if(plain || pretty) {
 		var pre = pre+'Problem: '
 		var a = PROOF.filter(function(a) {return a.rul=="Premise";});
@@ -256,9 +255,9 @@ function export_proof() {
 		}
 		proof = proof+'\\end{fitch}';
 	}
-	
+
 	document.getElementById('importarea').value = pre+proof;
-	
+
 	function mkodth(db,fb) { // makes depth lines and inserts fitch bar, with db the depth line symbol and fb the horizontal fitch bar symbol
 		var out = [];
 		for(var i = 0;i<PROOF.length;i++) {
@@ -274,7 +273,7 @@ function export_proof() {
 			}
 			out.push(s);
 		}
-		return out;	
+		return out;
 	}
 	// Int -> String
 	// Produces a string of n white spaces
@@ -307,7 +306,7 @@ function import_proof() {
 	var problem = extract[1];
 	clearall();
 	CONCLUSION.push(problem[1]);
-	
+
 	for(var i=0;i<prePROOF.length;i++) {
 		if(prePROOF[i].rul=='Premise' && problem[0].indexOf(prePROOF[i].frm)<0) {
 			return errmess([0],"ERROR: Your proof contains the following formula as a premise on line "+(i+1)+": "+prePROOF[i].frm+". This is not among the premises in the problem you entered.  Problem is:<br/>"+problem[0].join(',')+ " |- "+problem[1]);
@@ -330,14 +329,14 @@ function import_proof() {
 	draw_conclusion();
 	draw();
 }
-	
-// extracts proof from the text in the importarea returns a two element array: first 
+
+// extracts proof from the text in the importarea returns a two element array: first
 // element is the extracted proof, second is the extracted problem (from the problem line)
 function extract_proof() {
 	var proof = document.getElementById('importarea').value;
 
 	if(proof.indexOf("Paste a previously")==0) {throw "ERROR: paste a proof into the textarea first.";}
-	
+
 	var prePROOF = [];
 	var tmp = next_line(proof); // A two-element array, first the line, second the rest of the proof
 	var line = [];
@@ -348,22 +347,22 @@ function extract_proof() {
 	var s = [];
 	var l = '';
 	var d = 0;
-	
+
 	while(tmp[0].indexOf('Problem: ')!=0 && proof.length!=0) { // consumes until problem line
 		proof = tmp[1];
 		tmp = next_line(proof);
-	} // report error if no problem line found 
+	} // report error if no problem line found
 	if(proof.length==0) {throw 'ERROR: proofs must begin with a problem line.  Something like "Problem: (P>Q), P |- Q"';}
 	try{var problem = get_problem(tmp[0]);} catch(err) {return errmess([0],err);} // extracts problem from problem line
-	
+
 	while(proof.length!=0 && (tmp[0].length==0 || (tmp[0][0]!=' ' && !isInt(tmp[0][0])))) { // consumes until proof starts
 		proof = tmp[1];
 		tmp = next_line(proof);
 	}
 	if(proof.length==0) {return nope();} // error if no proof found
-	
+
 	tmp = next_line(proof);
-		
+
 	while(tmp[0].length!=0) { // collects proof lines till we run out
 		line = tmp[0].split('  ').filter(fltr); // removes blank array elements
 		line = line.map(function(x) {return x.replace(/ /g,'');}); // removes whitespace
@@ -426,11 +425,11 @@ function extract_proof() {
 		}
 		prePROOF.push(nl);
 	}
-	
+
 	return [prePROOF,problem];
-	
+
 	// BELOW are some helper functions used by extract_proof()
-	
+
 	function next_line(str) {
 		var x = str.indexOf('\n');
 		if(x!=(-1)) {
@@ -455,7 +454,7 @@ function extract_proof() {
 		}
 		return hascontent;
 	}
-	
+
 	function doSI(r) {
 		if(r.indexOf('(')<0) {return [];}
 		var SIs = document.getElementById('siti').childNodes;
@@ -473,7 +472,7 @@ function extract_proof() {
 }
 
 // takes a string (from import_proof) and extracts the premises and conclusion
-// returns a two element array: first element an array of premises, second the 
+// returns a two element array: first element an array of premises, second the
 // conclusion string
 function get_problem(str) {
 	str = str.replace('Problem: ',''); // remove the 'Problem: ' part
@@ -512,11 +511,11 @@ function checkifdone() {
 	} else {errmess([1],'');}
 }
 
-// Displays error message.  The second parameter is the message, and the first 
+// Displays error message.  The second parameter is the message, and the first
 // is an array, of either one or two elements.  The first element is 0 for displaying
-// on a red background (errors), 1 for displaying on blue, and 2 for displaying on green.  
-// The second (optional) element gives the line number on which the error occurred.  
-// NOTE: error line number currently being ignored (I used  to  highlight the line with 
+// on a red background (errors), 1 for displaying on blue, and 2 for displaying on green.
+// The second (optional) element gives the line number on which the error occurred.
+// NOTE: error line number currently being ignored (I used  to  highlight the line with
 // the error in red).
 function errmess(n,mess) {
 	var erel = document.getElementById('errord');
