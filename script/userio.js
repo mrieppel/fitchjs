@@ -123,6 +123,8 @@ function clear_app() {
 	document.getElementById('frm').value = '';
 	document.getElementById('rul').value = '--Select--';
 	document.getElementById('lin').value = '';
+	document.getElementById('premises').value = '';
+	document.getElementById('conclusion').value = '';
 	show('rul');
 }
 
@@ -498,6 +500,14 @@ function clearall() {
 	draw_conclusion();
 	draw();
 	draw_goals();
+}
+
+// start a new proof
+function restart_proof() {
+	clearall();
+	clear_app();
+	errmess([1],'');
+	disp('app');
 }
 
 // check if proof is complete
