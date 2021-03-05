@@ -248,6 +248,13 @@ border:solid 1px #B4BAEA;
 background-color:#F0F4FF;
 }
 
+#restartd {
+clear: both;
+position: relative;
+top: 10px;
+text-align: center;
+}
+
 /* d3 svg element styles */
 
 text {
