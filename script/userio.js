@@ -51,7 +51,7 @@ function setup_proof() {
 		CONCLUSION.push(conclusion);
 	} catch(err) {
 		clearall();
-		return errmess([0],'ERROR: conclusion is not well formed.');
+		return errmess([0],err);
 	}
 
 	for(var i=0;i<premises.length;i++) {
@@ -136,6 +136,7 @@ function clear_gfrm() {
 
 // checks goal formula and returns validated formula
 function check_goal(f) {
+	if(f==""){throw "ERROR: you must type formula into the Conclusion field before beginning.";}
 	var t = parse(f);
 
 	if(t.length==0) {
